@@ -25,10 +25,15 @@ namespace :banner do
     puts "Connected. Querying ..."
     
     cursor = nil # must establish in this scope
+    
+    cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
+    r = cursor.fetch_hash()
+    row_count = r["COUNT(*)"]
+    
     elapsed = Stopwatch.time do
       cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
     end
-
+    
     puts "Query complete. Time elapsed: #{elapsed} seconds"
     
     puts "Fetching rows..."
@@ -37,7 +42,7 @@ namespace :banner do
     elapsed = Stopwatch.time do
       while r = cursor.fetch_hash()
         courses << r
-        puts "Fetched row. Courses now at #{courses.length}."
+        puts "Fetched row. Courses now at #{courses.length} of #{row_count}."
       end
     end
     
