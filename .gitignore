@@ -10,4 +10,5 @@
 
 # Ignore files which need to be configured per-machine / in-production
 config/database.yml
+config/banner.yml
 

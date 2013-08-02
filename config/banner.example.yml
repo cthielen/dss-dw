@@ -1,0 +1,6 @@
+banner:
+  username: username
+  password: password
+  dbname: dbname
+  DYLD_LIBRARY_PATH: /opt/oracle/instantclient_11_2/
+  TNS_ADMIN: /opt/oracle/instantclient_11_2/
