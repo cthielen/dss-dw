@@ -37,6 +37,7 @@ namespace :banner do
     elapsed = Stopwatch.time do
       while r = cursor.fetch_hash()
         courses << r
+        puts "Fetched row. Courses now at #{courses.length}."
       end
     end
     
