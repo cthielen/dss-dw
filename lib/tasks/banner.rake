@@ -4,45 +4,56 @@ namespace :banner do
   desc 'Runs the Banner import. Takes approx. ?? minutes.'
   task :import => :environment do
     require 'oci8'
-    require 'pp'
-    load 'ObjectStash.rb'
+    require 'yaml'
 
+    # For debugging
+    load 'ObjectStash.rb'
+    require 'pp'
     require 'bigdecimal'
+    load 'stopwatch.rb'
 
     # NOTE: Oracle bits disabled while logic is worked through. Query is stored in file 'courses.stash'.
+    banner_config = YAML.load_file("#{Rails.root.to_s}/config/banner.yml")
 
-    # # Required for Oracle Instant Client
-    # ENV['DYLD_LIBRARY_PATH'] = '/opt/oracle/instantclient_11_2/'
-    # ENV['TNS_ADMIN'] = '/opt/oracle/instantclient_11_2/'
-    # 
-    # # Username, password, database
-    # conn = OCI8.new('', '', '')
-    # 
-    # puts "Seem to be connected. Querying ..."
-    # 
-    # # Limited to 25 rows of HISTORY courses while we debug
-    # cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301' AND DEPT_CODE IN ('HIS') and rownum <= 25")
-    # 
-    # puts "Query complete."
-    # 
-    # courses = []
-    # 
-    # puts "Fetching rows..."
-    # 
-    # while r = cursor.fetch_hash()
-    #   courses << r
-    # end
-    # 
-    # puts "Saving to disk..."
-    # 
-    # ObjectStash.store courses, 'courses.stash'
-    # 
-    # cursor.close
-    # conn.logoff
+    # Required for Oracle Instant Client
+    ENV['DYLD_LIBRARY_PATH'] = banner_config['banner']['DYLD_LIBRARY_PATH']
+    ENV['TNS_ADMIN'] = banner_config['banner']['TNS_ADMIN']
+    
+    # Username, password, database
+    conn = OCI8.new(banner_config['banner']['username'], banner_config['banner']['password'], banner_config['banner']['dbname'])
+    
+    puts "Connected. Querying ..."
+    
+    cursor = nil # must establish in this scope
+    elapsed = Stopwatch.time do
+      cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
+    end
 
-    # puts "done."
-    # 
-    # exit
+    puts "Query complete. Time elapsed: #{elapsed} seconds"
+    
+    puts "Fetching rows..."
+    
+    courses = []
+    elapsed = Stopwatch.time do
+      while r = cursor.fetch_hash()
+        courses << r
+      end
+    end
+    
+    puts "Took #{elapsed} seconds."
+    
+    puts "Saving to disk..."
+    
+    ObjectStash.store courses, 'courses.stash'
+    
+    cursor.close
+    conn.logoff
+
+    puts "done."
+    
+    exit
+
+
 
     courses = ObjectStash.load 'courses.stash'
 
