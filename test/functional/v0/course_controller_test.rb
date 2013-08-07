@@ -7,7 +7,7 @@ class Api::V0::CoursesControllerTest < ActionController::TestCase
     assert_response :unauthorized
   end
 
-  test "valid user should get access" do
+  test "valid whitelisted user should get access" do
     grant_whitelisted_access
 
     get :index
