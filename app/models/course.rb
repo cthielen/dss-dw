@@ -4,4 +4,5 @@ class Course < ActiveRecord::Base
   validates_presence_of :title, :number, :effective_term_id, :subject_id
 
   belongs_to :effective_term, :class_name => "Term"
+  belongs_to :subject
 end

@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3'
 
 # Gems used only for assets and not required
@@ -21,6 +18,10 @@ end
 
 # For Oracle DB connectivity
 gem 'ruby-oci8'
+
+# For rendering JSON, etc. templates
+gem 'rabl'
+gem 'oj'
 
 # Use unicorn as the app server
 # gem 'unicorn'

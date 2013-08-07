@@ -49,7 +49,10 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     multi_json (1.7.8)
+    oj (2.1.4)
     polyglot (0.3.3)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -102,6 +105,8 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  oj
+  rabl
   rails (= 3.2.14)
   ruby-oci8
   sass-rails (~> 3.2.3)
