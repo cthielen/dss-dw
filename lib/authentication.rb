@@ -15,11 +15,11 @@ module Authentication
     if session[:auth_via]
       case session[:auth_via]
       when :whitelisted_ip
-        #Authorization.current_user = ApiWhitelistedIpUser.find_by_address(session[:user_id])
+        Authorization.current_user = ApiWhitelistedIpUser.find_by_address(session[:user_id])
       when :api_key
-        #Authorization.current_user = ApiKeyUser.find_by_name(session[:user_id])
+        Authorization.current_user = ApiKeyUser.find_by_name(session[:user_id])
       end
-      #logger.info "User authentication passed due to existing session: #{session[:auth_via]}, #{Authorization.current_user}"
+      logger.info "User authentication passed due to existing session: #{session[:auth_via]}, #{Authorization.current_user}"
       return
     end
 
@@ -29,12 +29,12 @@ module Authentication
       logger.info "API authenticated via whitelist IP: #{request.remote_ip}"
       session[:user_id] = request.remote_ip
       session[:auth_via] = :whitelisted_ip
-      #Authorization.current_user = @whitelisted_user
+      Authorization.current_user = @whitelisted_user
       
-      #Authorization.ignore_access_control(true)
+      Authorization.ignore_access_control(true)
       @whitelisted_user.logged_in_at = DateTime.now()
       @whitelisted_user.save
-      #Authorization.ignore_access_control(false)
+      Authorization.ignore_access_control(false)
       return
     else
       logger.debug "authenticate: Not on the API whitelist."
@@ -72,6 +72,5 @@ module Authentication
     session[:auth_via] = nil
 
     head :unauthorized
-    #redirect_to :controller => "site", :action => "access_denied"
   end
 end

@@ -37,6 +37,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    declarative_authorization (0.5.7)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -105,6 +106,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  declarative_authorization (~> 0.5.7)
   oj
   rabl
   rails (= 3.2.14)

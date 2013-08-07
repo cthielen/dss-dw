@@ -23,6 +23,9 @@ gem 'ruby-oci8'
 gem 'rabl'
 gem 'oj'
 
+# Authorization layer
+gem 'declarative_authorization', '~> 0.5.7'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
