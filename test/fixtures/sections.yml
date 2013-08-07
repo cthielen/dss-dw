@@ -1,15 +1,15 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  sequence: MyString
-  max_enrollment: 1
-  actual_enrollment: 1
-  active: false
-  campus_id: 1
-
-two:
-  sequence: MyString
-  max_enrollment: 1
-  actual_enrollment: 1
-  active: false
-  campus_id: 1
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# 
+# one:
+#   sequence: MyString
+#   max_enrollment: 1
+#   actual_enrollment: 1
+#   active: false
+#   campus_id: 1
+# 
+# two:
+#   sequence: MyString
+#   max_enrollment: 1
+#   actual_enrollment: 1
+#   active: false
+#   campus_id: 1

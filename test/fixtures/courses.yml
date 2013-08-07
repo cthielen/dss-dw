@@ -1,13 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  subject_id: 1
-  number: MyString
-  title: MyString
-  effective_term_id: 1
-
-two:
-  subject_id: 1
-  number: MyString
-  title: MyString
-  effective_term_id: 1
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# 
+# one:
+#   subject_id: 1
+#   number: MyString
+#   title: MyString
+#   effective_term_id: 1
+# 
+# two:
+#   subject_id: 1
+#   number: MyString
+#   title: MyString
+#   effective_term_id: 1

@@ -1,27 +1,27 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  crn: MyString
-  active: false
-  term_id: 1
-  department_id: 1
-  instructor_id: 1
-  college_id: 1
-  course_id: 
-  grading_id: 
-  term_type_id: 
-  start_date: 2013-08-01
-  end_date: 2013-08-01
-
-two:
-  crn: MyString
-  active: false
-  term_id: 1
-  department_id: 1
-  instructor_id: 1
-  college_id: 1
-  course_id: 
-  grading_id: 
-  term_type_id: 
-  start_date: 2013-08-01
-  end_date: 2013-08-01
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+# 
+# one:
+#   crn: MyString
+#   active: false
+#   term_id: 1
+#   department_id: 1
+#   instructor_id: 1
+#   college_id: 1
+#   course_id: 
+#   grading_id: 
+#   term_type_id: 
+#   start_date: 2013-08-01
+#   end_date: 2013-08-01
+# 
+# two:
+#   crn: MyString
+#   active: false
+#   term_id: 1
+#   department_id: 1
+#   instructor_id: 1
+#   college_id: 1
+#   course_id: 
+#   grading_id: 
+#   term_type_id: 
+#   start_date: 2013-08-01
+#   end_date: 2013-08-01
