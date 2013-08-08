@@ -32,5 +32,8 @@ gem 'unicorn'
 # Deploy with Capistrano
 gem 'capistrano'
 
+# For scheduled tasks
+gem 'whenever'
+
 # To use debugger
 # gem 'debugger'
