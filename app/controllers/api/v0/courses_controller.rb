@@ -9,7 +9,7 @@ module Api
       def index
         logger.info "#{current_user.log_identifier}@#{request.remote_ip}: Loaded courses index."
         
-        render "courses/index"
+        render "api/v0/courses/index"
       end
       
       private
