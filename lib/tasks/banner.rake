@@ -16,8 +16,8 @@ namespace :banner do
     banner_config = YAML.load_file("#{Rails.root.to_s}/config/banner.yml")
 
     # Required for Oracle Instant Client
-    ENV['DYLD_LIBRARY_PATH'] = banner_config['banner']['DYLD_LIBRARY_PATH']
-    ENV['TNS_ADMIN'] = banner_config['banner']['TNS_ADMIN']
+    #ENV['DYLD_LIBRARY_PATH'] = banner_config['banner']['DYLD_LIBRARY_PATH']
+    #ENV['TNS_ADMIN'] = banner_config['banner']['TNS_ADMIN']
     
     # Username, password, database
     conn = OCI8.new(banner_config['banner']['username'], banner_config['banner']['password'], banner_config['banner']['dbname'])
