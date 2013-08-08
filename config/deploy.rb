@@ -4,13 +4,6 @@ require "bundler/capistrano"
 set :whenever_command, "bundle exec whenever"
 require "whenever/capistrano"
 
-# 'delayed_job' setup
-require "delayed/recipes"
-before "deploy:restart", "delayed_job:stop"
-after  "deploy:restart", "delayed_job:start"
-after "deploy:stop",  "delayed_job:stop"
-after "deploy:start", "delayed_job:start"
-
 after "deploy:restart", "deploy:prime_cache"
 
 server "169.237.120.176", :web, :app, :db, primary: true
