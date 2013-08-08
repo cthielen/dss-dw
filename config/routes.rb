@@ -5,6 +5,7 @@ DssDw::Application.routes.draw do
     scope module: :v0, constraints: ApiConstraints.new(version: 0, default: true) do
       resources :courses
       resources :terms
+      resources :departments
     end
     # scope module: :v2, constraints: ApiConstraints.new(version: 2, default: true) do
     #   resources :products
