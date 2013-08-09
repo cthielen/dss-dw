@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 
+# For Oracle DB connectivity
+# (Must be loaded before 'pg' due to LDAP symbol conflicts)
+gem 'ruby-oci8'
+
 gem 'sqlite3', :groups => [:development, :test]
 gem 'pg', :groups => [:production]
 
@@ -16,9 +20,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-# For Oracle DB connectivity
-gem 'ruby-oci8'
 
 # For rendering JSON, etc. templates
 gem 'rabl'
