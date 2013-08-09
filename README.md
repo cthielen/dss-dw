@@ -37,3 +37,6 @@ The following are examples of the DSS Data Warehouse API:
 
 ## Reporting Bugs, Issues
 Use the issue tracker found at [GitHub](https://github.com/cthielen/dss-dw/issues).
+
+### Known Issues
+There's currently a 'conflict' in Oracle's Instant Client and many gems which use LDAP code ('pg', 'mysql2') -- Oracle's code relies on a redefinition of some LDAP-'standard' symbols like ldap_first_entry, which can lead to linking errors. This codebase avoids LDAP for this reason and recommends if you have segmentation faults or assertion errors while using Oracle code, you link against a version of your library ('pg' or 'mysql2', for example) which does not have LDAP support compiled in. Be aware that you can compile a special gem and package it in vendor/cache/ if you need LDAP support in these gems system-wide.
