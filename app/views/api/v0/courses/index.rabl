@@ -1,4 +1,4 @@
-collection @courses => :courses
+collection @courses, :object_root => "course"
 
 attributes :crn, :start_date, :end_date
 

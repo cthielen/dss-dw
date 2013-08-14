@@ -31,9 +31,9 @@ module Api
         
         # Nested in /department?
         if params[:department_id]
-          @department_id = Department.find_by_code(params[:department_id])
+          @department = Department.find_by_code(params[:department_id])
           
-          @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).where(:department_id => @department_id, :term_id => term.id)
+          @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).where(:department_id => @department.id, :term_id => term.id)
         else
           @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).includes(:department).where(:term_id => term.id).limit(100)
         end

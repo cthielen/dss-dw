@@ -27,9 +27,7 @@ The following are examples of the DSS Data Warehouse API:
     
     https://dss-dw.dev/departments/[department-code]/courses - information about the department's current courses
     
-    https://dss-dw.dev/departments/[department-code]/terms - information about the department's courses for term 'term-code'
-    
-    https://dss-dw.dev/departments/[department-code]/terms/[term-id]/courses - index of courses offered in term [term-id] for department [department-id]
+    https://dss-dw.dev/departments/[department-code]/terms/[term-code] - index of courses offered in term [term-code] for department [department-code]
     
     https://dss-dw.dev/people - index of all people
     

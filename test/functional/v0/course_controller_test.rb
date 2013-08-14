@@ -21,7 +21,7 @@ class Api::V0::CoursesControllerTest < ActionController::TestCase
 
     get :index, :format => :json, :department_id => 'HIS'
 
-    body = JSON.parse(response.body)["courses"][0]["course"]
+    body = JSON.parse(response.body)[0]["course"]
 
     assert body.include?('college_code'), 'JSON response should include college_code field'
     assert body.include?('crn'), 'JSON response should include CRN field'
@@ -40,7 +40,7 @@ class Api::V0::CoursesControllerTest < ActionController::TestCase
 
     get :index, :format => :json
 
-    body = JSON.parse(response.body)["courses"][0]["course"]
+    body = JSON.parse(response.body)[0]["course"]
 
     assert body.include?('college_code'), 'JSON response should include college_code field'
     assert body.include?('crn'), 'JSON response should include CRN field'
