@@ -33,6 +33,8 @@ class Api::V0::CoursesControllerTest < ActionController::TestCase
     assert body.include?('instructor_first'), 'JSON response should include instructor_first field'
     assert body.include?('instructor_middle'), 'JSON response should include instructor_middle field'
     assert body.include?('instructor_last'), 'JSON response should include instructor_last field'
+    refute body.include?('department_code'), 'JSON response should not include department_code field'
+    refute body.include?('department_description'), 'JSON response should not include department_description field'
   end
 
   test 'course index JSON request must include certain attributes' do

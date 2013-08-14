@@ -17,6 +17,6 @@ glue(:college) { attributes :code => :college_code }
 # @department_id will be set if this courses/index call is a nested route within /departments,
 # in which case we don't need to display department information (they know it based on their query)
 glue(:department) {
-  attribute :code => :department_code, :if => lambda { |c| @department_id == nil }
-  attribute :description => :department_description, :if => lambda { |c| @department_id == nil }
+  attribute :code => :department_code, :if => lambda { |c| @department == nil }
+  attribute :description => :department_description, :if => lambda { |c| @department == nil }
 }

@@ -13,27 +13,35 @@ DSS DW currently compiles information about **courses, people, and organizationa
 ## API
 The following are examples of the DSS Data Warehouse API:
 
-    https://dss-dw.dev/terms - index of all terms/quarters
+    https://dss-dw.dev/api/terms - index of all terms/quarters
     
-    https://dss-dw.dev/courses - index of all courses
+    https://dss-dw.dev/api/courses - index of all courses
     
-    https://dss-dw.dev/courses/[course-id]/terms - index of all terms course was offered
+    #https://dss-dw.dev/api/courses/[course-id]/terms - index of all terms course was offered
     
-    https://dss-dw.dev/departments - index of all departments
+    https://dss-dw.dev/api/departments - index of all departments
     
-    https://dss-dw.dev/departments/[department-code] - information about a specific department
+    https://dss-dw.dev/api/departments/[department-code] - information about a specific department
     
-    https://dss-dw.dev/departments/[department-code]/people - information about the department's current people
+    #https://dss-dw.dev/api/departments/[department-code]/people - information about the department's current people
     
-    https://dss-dw.dev/departments/[department-code]/courses - information about the department's current courses
+    https://dss-dw.dev/api/departments/[department-code]/courses - information about the department's current courses
     
-    https://dss-dw.dev/departments/[department-code]/terms/[term-code] - index of courses offered in term [term-code] for department [department-code]
+    #https://dss-dw.dev/api/departments/[department-code]/terms/[term-code] - index of courses offered in term [term-code] for department [department-code]
     
-    https://dss-dw.dev/people - index of all people
+    #https://dss-dw.dev/api/people - index of all people
     
-    https://dss-dw.dev/people?q=doe - index of all people with names containing 'doe' (case-insensitive)
+    #https://dss-dw.dev/api/people?q=doe - index of all people with names containing 'doe' (case-insensitive)
     
-    https://dss-dw.dev/people/johndoe.json - information about user with Kerberos ID 'johndoe'
+    #https://dss-dw.dev/api/people/johndoe.json - information about user with Kerberos ID 'johndoe'
+
+### API Versioning
+API versioning is supported via URL:
+
+    https://dss-dw.dev/api/terms - Query for terms using the latest API version
+    https://dss-dw.dev/api/v0/terms - Query for terms using API v0
+    https://dss-dw.dev/api/v1/terms - Query for terms using API v1
+    ... etc.
 
 ## Reporting Bugs, Issues
 Use the issue tracker found at [GitHub](https://github.com/cthielen/dss-dw/issues).
