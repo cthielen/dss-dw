@@ -1,9 +1,4 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   code: MyString
-#   description: MyString
-# 
-# two:
-#   code: MyString
-#   description: MyString
+college1:
+  id: 1
+  code: LS
+  description: Letters & Science

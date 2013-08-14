@@ -1,9 +1,4 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   code: MyString
-#   description: MyString
-# 
-# two:
-#   code: MyString
-#   description: MyString
+winter_quarter_2013:
+  id: 1
+  code: 201301
+  description: Winter Quarter 2013

@@ -1,13 +1,6 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   instructor_id: MyString
-#   last_name: MyString
-#   first_name: MyString
-#   middle_initial: MyString
-# 
-# two:
-#   instructor_id: MyString
-#   last_name: MyString
-#   first_name: MyString
-#   middle_initial: MyString
+instructor1:
+  id: 1
+  instructor_id: 806092270
+  last_name: Tezcan
+  first_name: Baki
+  middle_initial: 

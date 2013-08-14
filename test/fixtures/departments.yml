@@ -1,9 +1,4 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   code: MyString
-#   description: MyString
-# 
-# two:
-#   code: MyString
-#   description: MyString
+history:
+  id: 1
+  code: HIS
+  description: History
