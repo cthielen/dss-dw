@@ -37,4 +37,4 @@ gem 'capistrano'
 gem 'whenever'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
