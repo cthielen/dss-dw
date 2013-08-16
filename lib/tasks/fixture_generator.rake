@@ -1,3 +1,6 @@
+# Code originally by David Welton from (http://journal.dedasys.com/2008/11/10/generating-rails-fixtures-from-large-datasets)
+# Modified by Christopher Thielen (Rails 3.x compatibility, enhancements)
+
 @fixtures = {}
 @seen = {}
 
