@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130807021017) do
+ActiveRecord::Schema.define(:version => 20130816021803) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -21,6 +21,9 @@ ActiveRecord::Schema.define(:version => 20130807021017) do
     t.datetime "logged_in_at"
   end
 
+  add_index "api_key_users", ["name", "secret"], :name => "index_api_key_users_on_name_and_secret"
+  add_index "api_key_users", ["name"], :name => "index_api_key_users_on_name"
+
   create_table "api_whitelisted_ip_users", :force => true do |t|
     t.string   "address"
     t.datetime "created_at",   :null => false
@@ -28,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20130807021017) do
     t.text     "reason"
     t.datetime "logged_in_at"
   end
+
+  add_index "api_whitelisted_ip_users", ["address"], :name => "index_api_whitelisted_ip_users_on_address"
 
   create_table "campus", :force => true do |t|
     t.string   "code",        :limit => 3
@@ -75,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20130807021017) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "departments", ["code"], :name => "index_departments_on_code"
+
   create_table "grading_types", :force => true do |t|
     t.string   "code",        :limit => 1
     t.string   "description", :limit => 30
@@ -121,5 +128,7 @@ ActiveRecord::Schema.define(:version => 20130807021017) do
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
   end
+
+  add_index "terms", ["code"], :name => "index_terms_on_code"
 
 end
