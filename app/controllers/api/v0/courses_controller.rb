@@ -35,7 +35,7 @@ module Api
           
           @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).where(:department_id => @department.id, :term_id => term.id)
         else
-          @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).includes(:department).where(:term_id => term.id).limit(100)
+          @courses = CourseOffering.includes(:course).includes(:instructor).includes(:college).includes(:department).where(:term_id => term.id)
         end
       end
     end

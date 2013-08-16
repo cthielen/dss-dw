@@ -38,3 +38,6 @@ gem 'whenever'
 
 # To use debugger
 gem 'debugger'
+
+# For benchmarking
+gem 'ruby-prof'
