@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816021803) do
+ActiveRecord::Schema.define(:version => 20130919184509) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(:version => 20130816021803) do
   end
 
   add_index "api_whitelisted_ip_users", ["address"], :name => "index_api_whitelisted_ip_users_on_address"
+
+  create_table "associations", :force => true do |t|
+    t.integer  "major_id"
+    t.integer  "college_id"
+    t.integer  "department_id"
+    t.integer  "title_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "campus", :force => true do |t|
     t.string   "code",        :limit => 3
@@ -96,6 +105,27 @@ ActiveRecord::Schema.define(:version => 20130816021803) do
     t.string   "middle_initial", :limit => 1
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "first"
+    t.string   "last"
+    t.string   "loginid"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.integer  "iamId"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "person_associations", :force => true do |t|
+    t.integer  "person_id"
+    t.integer  "association_id"
+    t.boolean  "isSIS"
+    t.boolean  "isPPS"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "sections", :force => true do |t|
