@@ -107,20 +107,24 @@ namespace :iam do
         person.address = personContact["postalAddress"]
         person.loginid = loginid
 
+        @successfullySaved += 1 if person.save
+        
         # PPS Associations
         associations.each do |a|
-          # person.relationships << relationship unless person.relationships.include?(relationship) # Avoid duplicates
-          puts "\t- #{a['deptOfficialName']}"
-          puts "\t\t- Title #{a['titleOfficialName']}"
+          department = Department.find_or_create_by_code(code: a["deptCode"], description: a["deptOfficialName"])
+          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: true, isSIS: false, department_id: department.id)
+          puts "\t- Title #{a['titleOfficialName']}"
+          person.relationships << relationship
         end
 
         # SIS Associations
         student_associations.each do |a|
-          puts "\t- #{a['majorName']}"
-          puts "\t\t- Title #{a['levelName']}"
+          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: false, isSIS: true)
+          puts "- #{a['majorName']}"
+          puts "\t- Title #{a['levelName']}"
+          person.relationships << relationship
         end
         
-        @successfullySaved += 1 if person.save
       rescue StandardError => e
         puts "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace.inspect}"
         @erroredOut += 1
