@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920221919) do
+ActiveRecord::Schema.define(:version => 20130920225701) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -98,6 +98,13 @@ ActiveRecord::Schema.define(:version => 20130920221919) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "majors", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "people", :force => true do |t|
     t.string   "dFirst"
     t.string   "dLast"
@@ -161,5 +168,13 @@ ActiveRecord::Schema.define(:version => 20130920221919) do
   end
 
   add_index "terms", ["code"], :name => "index_terms_on_code"
+
+  create_table "titles", :force => true do |t|
+    t.string   "code"
+    t.string   "oName"
+    t.string   "dName"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

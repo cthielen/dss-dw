@@ -112,16 +112,16 @@ namespace :iam do
         # PPS Associations
         associations.each do |a|
           department = Department.find_or_create_by_code(code: a["deptCode"], description: a["deptOfficialName"])
-          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: true, isSIS: false, department_id: department.id)
-          puts "\t- Title #{a['titleOfficialName']}"
+          title = Title.find_or_create_by_code(code: a["titleCode"], oName: a["titleOfficialName"], dName: a["titleDisplayName"])
+          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: true, isSIS: false, department_id: department.id, title_id: title.id)
           person.relationships << relationship
         end
 
         # SIS Associations
         student_associations.each do |a|
-          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: false, isSIS: true)
-          puts "- #{a['majorName']}"
-          puts "\t- Title #{a['levelName']}"
+          major = Major.find_or_create_by_code(code: a["majorCode"], name: a["majorName"])
+          college = College.find_or_create_by_code(code: a["collegeCode"], description: a["collegeName"])
+          relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: false, isSIS: true, major_id: major.id, college_id: college.id)
           person.relationships << relationship
         end
         
