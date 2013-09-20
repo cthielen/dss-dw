@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816021803) do
+ActiveRecord::Schema.define(:version => 20130920225701) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -98,6 +98,44 @@ ActiveRecord::Schema.define(:version => 20130816021803) do
     t.datetime "updated_at",                   :null => false
   end
 
+  create_table "majors", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.string   "dFirst"
+    t.string   "dLast"
+    t.string   "loginid"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.integer  "iamId"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "dMiddle"
+    t.string   "oFirst"
+    t.string   "oMiddle"
+    t.string   "oLast"
+    t.boolean  "isFaculty"
+    t.boolean  "isStaff"
+    t.boolean  "isStudent"
+  end
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "major_id"
+    t.integer  "college_id"
+    t.integer  "department_id"
+    t.integer  "title_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.boolean  "isPPS"
+    t.boolean  "isSIS"
+    t.integer  "person_id"
+  end
+
   create_table "sections", :force => true do |t|
     t.string   "sequence",          :limit => 3
     t.integer  "max_enrollment"
@@ -130,5 +168,13 @@ ActiveRecord::Schema.define(:version => 20130816021803) do
   end
 
   add_index "terms", ["code"], :name => "index_terms_on_code"
+
+  create_table "titles", :force => true do |t|
+    t.string   "code"
+    t.string   "oName"
+    t.string   "dName"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
