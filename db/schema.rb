@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920220041) do
+ActiveRecord::Schema.define(:version => 20130920221919) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -117,15 +117,6 @@ ActiveRecord::Schema.define(:version => 20130920220041) do
     t.boolean  "isStudent"
   end
 
-  create_table "person_relationships", :force => true do |t|
-    t.integer  "person_id"
-    t.integer  "relationship_id"
-    t.boolean  "isSIS"
-    t.boolean  "isPPS"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-  end
-
   create_table "relationships", :force => true do |t|
     t.integer  "major_id"
     t.integer  "college_id"
@@ -133,6 +124,9 @@ ActiveRecord::Schema.define(:version => 20130920220041) do
     t.integer  "title_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.boolean  "isPPS"
+    t.boolean  "isSIS"
+    t.integer  "person_id"
   end
 
   create_table "sections", :force => true do |t|

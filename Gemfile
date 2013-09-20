@@ -18,7 +18,7 @@ group :assets do
 end
 
 # For Oracle DB connectivity
-gem 'ruby-oci8'
+# gem 'ruby-oci8'
 
 # For rendering JSON, etc. templates
 gem 'rabl'

@@ -1,8 +1,7 @@
 class Person < ActiveRecord::Base
   attr_accessible :address, :email, :oFirst, :oMiddle, :oLast, :dFirst, :dMiddle, :dLast, :iamId, :loginid, :phone, :isFaculty, :isStaff, :isStudent
 
-  has_many :person_relationships
-  has_many :relationships, through: :person_relationships
+  has_many :relationships
 
   validates :oFirst, :oLast, :loginid, :iamId, presence: true
   # validates :email, format: { with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Email is invalid" }
