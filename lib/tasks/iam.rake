@@ -41,14 +41,8 @@ namespace :iam do
         # Parse results
         buffer = resp.body
         result = JSON.parse(buffer)
-
-        first = result["responseData"]["results"][0]["dFirstName"]
-        middle = result["responseData"]["results"][0]["oMiddleName"]
-        last = result["responseData"]["results"][0]["dLastName"]
-        isEmployee = result["responseData"]["results"][0]["isEmployee"]
-        isFaculty = result["responseData"]["results"][0]["isFaculty"]
-        isStudent = result["responseData"]["results"][0]["isStudent"]
-        isStaff = result["responseData"]["results"][0]["isStaff"]
+        
+        personInfo = result["responseData"]["results"][0]
 
         ## Fetch the contact info
         url = "#{@site}iam/people/contactinfo/#{id}?key=#{@key}&v=1.0"
@@ -58,9 +52,7 @@ namespace :iam do
         buffer = resp.body
         result = JSON.parse(buffer)
 
-        email = result["responseData"]["results"][0]["email"]
-        phone = result["responseData"]["results"][0]["workPhone"]
-        address = result["responseData"]["results"][0]["postalAddress"]
+        personContact = result["responseData"]["results"][0]
 
         ## Fetch the kerberos userid
         url = "#{@site}iam/people/prikerbacct/#{id}?key=#{@key}&v=1.0"
@@ -101,13 +93,18 @@ namespace :iam do
         ## Insert results in database
         puts "IAM_ID: #{id}:"
         person = Person.find_or_create_by_iamId(iamId: id)
-        person.first = first
-        person.last = last
-        person.email = email
-        unless phone.nil?
-          person.phone = phone
-        end
-        person.address = address
+        person.dFirst = personInfo["dFirstName"]
+        person.dMiddle = personInfo["dMiddleName"]
+        person.dLast = personInfo["dLastName"]
+        person.oFirst = personInfo["oFirstName"]
+        person.oMiddle = personInfo["oMiddleName"]
+        person.oLast = personInfo["oLastName"]
+        person.isFaculty = personInfo["isFaculty"]
+        person.isStaff = personInfo["isStaff"]
+        person.isStudent = personInfo["isStudent"]
+        person.email = personContact["email"]
+        person.phone = personContact["workPhone"] unless personContact["workPhone"].nil?
+        person.address = personContact["postalAddress"]
         person.loginid = loginid
 
         # PPS Associations
@@ -122,12 +119,6 @@ namespace :iam do
           puts "\t- #{a['majorName']}"
           puts "\t\t- Title #{a['levelName']}"
         end
-
-        # Comparing affiliations
-        puts "\t- Faculty Status: (#{isFaculty})"
-        puts "\t- Staff Status: (#{isStaff})"
-        puts "\t- Student Status: (#{isStudent})"
-
         
         @successfullySaved += 1 if person.save
       rescue StandardError => e
