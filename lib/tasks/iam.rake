@@ -175,7 +175,6 @@ namespace :iam do
         # Parse results
         buffer = resp.body
         result = JSON.parse(buffer)
-        loginid = result["responseData"]["results"][0]["userId"]
         fetch_by_iamId(iamID)
       end
     end
