@@ -158,7 +158,7 @@ namespace :iam do
       end
     end
     for m in UcdLookups::MAJORS.values()
-      puts "Processing graduate students in #{m}".magenta
+      puts "Processing graduate students in #{m}"
       url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
       # Fetch URL
       resp = Net::HTTP.get_response(URI.parse(url))
