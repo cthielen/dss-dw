@@ -46,7 +46,7 @@ namespace :iam do
 
     begin
       # Insert results in database
-      person = Person.find_or_create_by_iamId(iamId: id)
+      person = Person.find_or_create_by_iam_id(iam_id: id)
 
       if person.id.nil?
         Rails.logger.info "Imported #{personInfo['oFirstName']} #{personInfo['oLastName']} (IAM ID #{id})"
@@ -54,15 +54,15 @@ namespace :iam do
         Rails.logger.info "Updated #{personInfo['oFirstName']} #{personInfo['oLastName']} (IAM ID #{id})"
       end
 
-      person.dFirst = personInfo["dFirstName"]
-      person.dMiddle = personInfo["dMiddleName"]
-      person.dLast = personInfo["dLastName"]
-      person.oFirst = personInfo["oFirstName"]
-      person.oMiddle = personInfo["oMiddleName"]
-      person.oLast = personInfo["oLastName"]
-      person.isFaculty = personInfo["isFaculty"]
-      person.isStaff = personInfo["isStaff"]
-      person.isStudent = personInfo["isStudent"]
+      person.d_first = personInfo["dFirstName"]
+      person.d_middle = personInfo["dMiddleName"]
+      person.d_last = personInfo["dLastName"]
+      person.o_first = personInfo["oFirstName"]
+      person.o_middle = personInfo["oMiddleName"]
+      person.o_last = personInfo["oLastName"]
+      person.is_faculty = personInfo["isFaculty"]
+      person.is_staff = personInfo["isStaff"]
+      person.is_student = personInfo["isStudent"]
       person.email = personContact["email"]
       person.phone = personContact["workPhone"] unless personContact["workPhone"].nil?
       person.address = personContact["postalAddress"]
@@ -73,8 +73,8 @@ namespace :iam do
       # PPS Associations
       associations.each do |a|
         department = Department.find_or_create_by_code(code: a["deptCode"], description: a["deptOfficialName"])
-        title = Title.find_or_create_by_code(code: a["titleCode"], oName: a["titleOfficialName"], dName: a["titleDisplayName"])
-        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: true, isSIS: false, department_id: department.id, title_id: title.id)
+        title = Title.find_or_create_by_code(code: a["titleCode"], o_name: a["titleOfficialName"], d_name: a["titleDisplayName"])
+        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, is_pps: true, is_sis: false, department_id: department.id, title_id: title.id)
         person.relationships << relationship
       end
 
@@ -82,7 +82,7 @@ namespace :iam do
       student_associations.each do |a|
         major = Major.find_or_create_by_code(code: a["majorCode"], description: a["majorName"])
         college = College.find_or_create_by_code(code: a["collegeCode"], description: a["collegeName"])
-        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: false, isSIS: true, major_id: major.id, college_id: college.id)
+        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, is_pps: false, is_sis: true, major_id: major.id, college_id: college.id)
         person.relationships << relationship
       end
       
@@ -92,7 +92,7 @@ namespace :iam do
     end
   end
 
-  task :import, [:iam_id] => :environment do |t, args|
+  task :import, [:iamID] => :environment do |t, args|
     IAM_SETTINGS_FILE = "config/iam.yml"
 
     require 'net/http'
@@ -116,7 +116,7 @@ namespace :iam do
       $IAM_SETTINGS = YAML.load_file(IAM_SETTINGS_FILE)
       @site = $IAM_SETTINGS['HOST']
       @key = $IAM_SETTINGS['KEY']
-      @iamId = args.iam_id
+      @iamId = args.iamID
     else
       puts "You need to set up config/iam.yml before running this application."
       exit
