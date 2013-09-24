@@ -3,65 +3,48 @@
 namespace :iam do
   desc 'Runs the IAM import. Takes approx. ?? minutes.'
 
+  # Method to get response from given URL
+  def fetch_url(url)
+    begin
+      # Fetch URL
+      resp = Net::HTTP.get_response(URI.parse(url))
+      # Parse results
+      buffer = resp.body
+      result = JSON.parse(buffer)
+    
+      return result["responseData"]["results"]
+    rescue StandardError => e
+      $stderr.puts "Could not connect to IAM server -- #{e.message} #{e.backtrace}"
+    end
+  end
+  
   # Method to get individual info
   def fetch_by_iamId(id)
+    # Fetch the person
+    url = "#{@site}iam/people/search/?iamId=#{id}&key=#{@key}&v=1.0"
+    personInfo = fetch_url(url)[0]
+
+    # Fetch the contact info
+    url = "#{@site}iam/people/contactinfo/#{id}?key=#{@key}&v=1.0"
+    personContact = fetch_url(url)[0]
+
+    # Fetch the kerberos userid
+    url = "#{@site}iam/people/prikerbacct/#{id}?key=#{@key}&v=1.0"
     begin
-      # Fetch the person
-      url = "#{@site}iam/people/search/?iamId=#{id}&key=#{@key}&v=1.0"
-      # Fetch URL
-      resp = Net::HTTP.get_response(URI.parse(url))
-      # Parse results
-      buffer = resp.body
-      result = JSON.parse(buffer)
-      
-      personInfo = result["responseData"]["results"][0]
+      loginid = fetch_url(url)[0]["userId"]
+    rescue
+      Rails.logger.info "ID# #{id} does not have a loginId in IAM"
+    end
 
-      # Fetch the contact info
-      url = "#{@site}iam/people/contactinfo/#{id}?key=#{@key}&v=1.0"
-      # Fetch URL
-      resp = Net::HTTP.get_response(URI.parse(url))
-      # Parse results
-      buffer = resp.body
-      result = JSON.parse(buffer)
+    # Fetch the association
+    url = "#{@site}iam/associations/pps/search?iamId=#{id}&key=#{@key}&v=1.0"
+    associations = fetch_url(url)
 
-      personContact = result["responseData"]["results"][0]
+    # Fetch the student associations
+    url = "#{@site}iam/associations/sis/#{id}?key=#{@key}&v=1.0"
+    student_associations = fetch_url(url)
 
-      # Fetch the kerberos userid
-      url = "#{@site}iam/people/prikerbacct/#{id}?key=#{@key}&v=1.0"
-      # Fetch URL
-      resp = Net::HTTP.get_response(URI.parse(url))
-      # Parse results
-      buffer = resp.body
-      result = JSON.parse(buffer)
-
-      begin
-        loginid = result["responseData"]["results"][0]["userId"]
-      rescue
-        Rails.logger.info "ID# #{id} does not have a loginId in IAM"
-      end
-
-      # Fetch the association
-      url = "#{@site}iam/associations/pps/search?iamId=#{id}&key=#{@key}&v=1.0"
-      # Fetch URL
-      resp = Net::HTTP.get_response(URI.parse(url))
-      # Parse results
-      buffer = resp.body
-      result = JSON.parse(buffer)
-
-      associations = result['responseData']['results']
-
-
-      # Fetch the student associations
-      url = "#{@site}iam/associations/sis/#{id}?key=#{@key}&v=1.0"
-      # Fetch URL
-      resp = Net::HTTP.get_response(URI.parse(url))
-      # Parse results
-      buffer = resp.body
-      result = JSON.parse(buffer)
-
-      student_associations = result['responseData']['results']
-
-
+    begin
       # Insert results in database
       person = Person.find_or_create_by_iamId(iamId: id)
 
@@ -104,7 +87,7 @@ namespace :iam do
       end
       
     rescue StandardError => e
-      Rails.logger.info "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace.inspect}"
+      Rails.logger.info "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace}"
       @erroredOut += 1
     end
   end
@@ -146,45 +129,20 @@ namespace :iam do
         # Fetch department members
         url = "#{@site}iam/associations/pps/search?deptCode=#{d}&key=#{@key}&v=1.0"
 
-        # Fetch URL
-        resp = Net::HTTP.get_response(URI.parse(url))
-        # Parse results
-        buffer = resp.body
-        result = JSON.parse(buffer)
-
         # Loop over members
-        result["responseData"]["results"].each do |p|
+        fetch_url(url).each do |p|
           @total += 1
-          iamID = p["iamId"]
-          url = "#{@site}iam/people/prikerbacct/#{iamID}?key=#{@key}&v=1.0"
-          # Fetch URL
-          resp = Net::HTTP.get_response(URI.parse(url))
-          # Parse results
-          buffer = resp.body
-          result = JSON.parse(buffer)
-
-          fetch_by_iamId(iamID)
+          fetch_by_iamId(p["iamId"])
         end
       end
       for m in UcdLookups::MAJORS.values()
         Rails.logger.info "Processing graduate students in #{m}"
         url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
-        # Fetch URL
-        resp = Net::HTTP.get_response(URI.parse(url))
-        # Parse results
-        buffer = resp.body
-        result = JSON.parse(buffer)
 
-        result["responseData"]["results"].each do |p|
+        # Loop over members
+        fetch_url(url).each do |p|
           @total += 1
-          iamID = p["iamId"]
-          url = "#{@site}iam/people/prikerbacct/#{iamID}?key=#{@key}&v=1.0"
-          # Fetch URL
-          resp = Net::HTTP.get_response(URI.parse(url))
-          # Parse results
-          buffer = resp.body
-          result = JSON.parse(buffer)
-          fetch_by_iamId(iamID)
+          fetch_by_iamId(p["iamId"])
         end
       end
     else
