@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130920225701) do
+ActiveRecord::Schema.define(:version => 20130924220514) do
 
   create_table "api_key_users", :force => true do |t|
     t.string   "secret"
@@ -100,28 +100,28 @@ ActiveRecord::Schema.define(:version => 20130920225701) do
 
   create_table "majors", :force => true do |t|
     t.string   "code"
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "people", :force => true do |t|
-    t.string   "dFirst"
-    t.string   "dLast"
+    t.string   "d_first"
+    t.string   "d_last"
     t.string   "loginid"
     t.string   "email"
     t.string   "phone"
     t.string   "address"
-    t.integer  "iamId"
+    t.integer  "iam_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "dMiddle"
-    t.string   "oFirst"
-    t.string   "oMiddle"
-    t.string   "oLast"
-    t.boolean  "isFaculty"
-    t.boolean  "isStaff"
-    t.boolean  "isStudent"
+    t.string   "d_middle"
+    t.string   "o_first"
+    t.string   "o_middle"
+    t.string   "o_last"
+    t.boolean  "is_faculty"
+    t.boolean  "is_staff"
+    t.boolean  "is_student"
   end
 
   create_table "relationships", :force => true do |t|
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(:version => 20130920225701) do
     t.integer  "title_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.boolean  "isPPS"
-    t.boolean  "isSIS"
+    t.boolean  "is_pps"
+    t.boolean  "is_sis"
     t.integer  "person_id"
   end
 
@@ -171,8 +171,8 @@ ActiveRecord::Schema.define(:version => 20130920225701) do
 
   create_table "titles", :force => true do |t|
     t.string   "code"
-    t.string   "oName"
-    t.string   "dName"
+    t.string   "o_name"
+    t.string   "d_name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

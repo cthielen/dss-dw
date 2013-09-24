@@ -1,6 +1,6 @@
 class Major < ActiveRecord::Base
-  attr_accessible :code, :name
+  attr_accessible :code, :description
   
-  validates_presence_of :code, :name
+  validates_presence_of :code, :description
   validates_uniqueness_of :code
 end
