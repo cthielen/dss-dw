@@ -37,7 +37,7 @@ namespace :iam do
       begin
         loginid = result["responseData"]["results"][0]["userId"]
       rescue
-        puts "ID# #{id} does not have a loginId in IAM"
+        Rails.logger.info "ID# #{id} does not have a loginId in IAM"
       end
 
       # Fetch the association
@@ -63,8 +63,14 @@ namespace :iam do
 
 
       # Insert results in database
-      puts "IAM_ID: #{id}:"
       person = Person.find_or_create_by_iamId(iamId: id)
+
+      if person.id.nil?
+        Rails.logger.info "Imported #{personInfo['oFirstName']} #{personInfo['oLastName']} (IAM ID #{id})"
+      else
+        Rails.logger.info "Updated #{personInfo['oFirstName']} #{personInfo['oLastName']} (IAM ID #{id})"
+      end
+
       person.dFirst = personInfo["dFirstName"]
       person.dMiddle = personInfo["dMiddleName"]
       person.dLast = personInfo["dLastName"]
@@ -98,7 +104,7 @@ namespace :iam do
       end
       
     rescue StandardError => e
-      puts "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace.inspect}"
+      Rails.logger.info "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace.inspect}"
       @erroredOut += 1
     end
   end
@@ -161,7 +167,7 @@ namespace :iam do
         end
       end
       for m in UcdLookups::MAJORS.values()
-        puts "Processing graduate students in #{m}"
+        Rails.logger.info "Processing graduate students in #{m}"
         url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
         # Fetch URL
         resp = Net::HTTP.get_response(URI.parse(url))
@@ -188,11 +194,11 @@ namespace :iam do
 
     timestamp_finish = Time.now
 
-    puts "\n\nFinished processing a total of #{@total}:\n"
-    puts "\t- #{@successfullySaved} successfully saved.\n"
-    puts "\t- #{@noKerberos} did not have LoginID in IAM.\n"
-    puts "\t- #{@erroredOut} errored out due to some missing fields.\n"
-    puts "Time elapsed: " + Time.at(timestamp_finish - timestamp_start).gmtime.strftime('%R:%S')
+    Rails.logger.info "\n\nFinished processing a total of #{@total}:\n"
+    Rails.logger.info "\t- #{@successfullySaved} successfully saved.\n"
+    Rails.logger.info "\t- #{@noKerberos} did not have LoginID in IAM.\n"
+    Rails.logger.info "\t- #{@erroredOut} errored out due to some missing fields.\n"
+    Rails.logger.info "Time elapsed: " + Time.at(timestamp_finish - timestamp_start).gmtime.strftime('%R:%S')
     
   end
 end
