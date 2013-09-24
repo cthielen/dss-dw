@@ -80,7 +80,7 @@ namespace :iam do
 
       # SIS Associations
       student_associations.each do |a|
-        major = Major.find_or_create_by_code(code: a["majorCode"], name: a["majorName"])
+        major = Major.find_or_create_by_code(code: a["majorCode"], description: a["majorName"])
         college = College.find_or_create_by_code(code: a["collegeCode"], description: a["collegeName"])
         relationship = Relationship.find_or_create_by_person_id(person_id: person.id, isPPS: false, isSIS: true, major_id: major.id, college_id: college.id)
         person.relationships << relationship
