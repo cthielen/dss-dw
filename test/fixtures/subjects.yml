@@ -1,4 +1,835 @@
-history:
+---
+subjects_001:
+  id: 74
+  code: AAS
+  description: African American & African Std
+  created_at: 2013-08-06 00:59:32.938548000 Z
+  updated_at: 2013-08-06 00:59:32.938548000 Z
+subjects_002:
+  id: 37
+  code: EBS
+  description: Engineering Biological Systems
+  created_at: 2013-08-06 00:57:59.680965000 Z
+  updated_at: 2013-08-06 00:57:59.680965000 Z
+subjects_003:
+  id: 139
+  code: EAS
+  description: East Asian Studies
+  created_at: 2013-08-06 01:12:52.188270000 Z
+  updated_at: 2013-08-06 01:12:52.188270000 Z
+subjects_004:
+  id: 136
+  code: EAPE
+  description: Education Abroad Program
+  created_at: 2013-08-06 01:09:05.203123000 Z
+  updated_at: 2013-08-06 01:09:05.203123000 Z
+subjects_005:
+  id: 8
+  code: DRA
+  description: Dramatic Art
+  created_at: 2013-08-05 22:57:54.671084000 Z
+  updated_at: 2013-08-05 22:57:54.671084000 Z
+subjects_006:
+  id: 102
+  code: DES
+  description: Design
+  created_at: 2013-08-06 01:00:38.005377000 Z
+  updated_at: 2013-08-06 01:00:38.005377000 Z
+subjects_007:
+  id: 113
+  code: COM
+  description: Comparative Literature
+  created_at: 2013-08-06 01:01:20.227514000 Z
+  updated_at: 2013-08-06 01:01:20.227514000 Z
+subjects_008:
+  id: 77
+  code: CHN
+  description: Chinese
+  created_at: 2013-08-06 00:59:38.936466000 Z
+  updated_at: 2013-08-06 00:59:38.936466000 Z
+subjects_009:
+  id: 138
+  code: CHIW
+  description: Chicano Studies
+  created_at: 2013-08-06 01:10:04.492320000 Z
+  updated_at: 2013-08-06 01:10:04.492320000 Z
+subjects_010:
+  id: 76
+  code: CHI
+  description: Chicano Studies
+  created_at: 2013-08-06 00:59:37.260309000 Z
+  updated_at: 2013-08-06 00:59:37.260309000 Z
+subjects_011:
+  id: 70
+  code: CHE
+  description: Chemistry
+  created_at: 2013-08-06 00:59:15.457019000 Z
+  updated_at: 2013-08-06 00:59:15.457019000 Z
+subjects_012:
+  id: 137
+  code: CHA
+  description: Med - Cell Biol & Human Anat
+  created_at: 2013-08-06 01:09:56.418337000 Z
+  updated_at: 2013-08-06 01:09:56.418337000 Z
+subjects_013:
+  id: 133
+  code: CAR
+  description: 'Med - Intrl: Cardiology'
+  created_at: 2013-08-06 01:07:00.726383000 Z
+  updated_at: 2013-08-06 01:07:00.726383000 Z
+subjects_014:
+  id: 134
+  code: AVS
+  description: Avian Sciences
+  created_at: 2013-08-06 01:08:14.037882000 Z
+  updated_at: 2013-08-06 01:08:14.037882000 Z
+subjects_015:
+  id: 115
+  code: ATM
+  description: Atmospheric Science
+  created_at: 2013-08-06 01:01:20.974991000 Z
+  updated_at: 2013-08-06 01:01:20.974991000 Z
+subjects_016:
+  id: 49
+  code: ANT
+  description: Anthropology
+  created_at: 2013-08-06 00:58:10.680788000 Z
+  updated_at: 2013-08-06 00:58:10.680788000 Z
+subjects_017:
+  id: 6
+  code: ANS
+  description: Animal Science
+  created_at: 2013-08-05 22:57:53.690945000 Z
+  updated_at: 2013-08-05 22:57:53.690945000 Z
+subjects_018:
+  id: 36
+  code: ABT
+  description: Applied Biological System Tech
+  created_at: 2013-08-06 00:57:59.329409000 Z
+  updated_at: 2013-08-06 00:57:59.329409000 Z
+subjects_019:
+  id: 23
+  code: ECI
+  description: Engineering Civil & Environ
+  created_at: 2013-08-06 00:57:49.362019000 Z
+  updated_at: 2013-08-06 00:57:49.362019000 Z
+subjects_020:
+  id: 135
+  code: EAP
+  description: Education Abroad Program
+  created_at: 2013-08-06 01:09:04.844415000 Z
+  updated_at: 2013-08-06 01:09:04.844415000 Z
+subjects_021:
+  id: 122
+  code: EAE
+  description: Engineering Aerospace Sci
+  created_at: 2013-08-06 01:01:53.332125000 Z
+  updated_at: 2013-08-06 01:01:53.332125000 Z
+subjects_022:
+  id: 13
+  code: BIM
+  description: Engineering Biomedical
+  created_at: 2013-08-06 00:57:31.234240000 Z
+  updated_at: 2013-08-06 00:57:31.234240000 Z
+subjects_023:
+  id: 27
+  code: ARE
+  description: Agricultural & Resource Econ
+  created_at: 2013-08-06 00:57:55.742478000 Z
+  updated_at: 2013-08-06 00:57:55.742478000 Z
+subjects_024:
+  id: 60
+  code: ECN
+  description: Economics
+  created_at: 2013-08-06 00:58:53.288886000 Z
+  updated_at: 2013-08-06 00:58:53.288886000 Z
+subjects_025:
+  id: 82
+  code: ECH
+  description: Engineering Chemical
+  created_at: 2013-08-06 00:59:45.150610000 Z
+  updated_at: 2013-08-06 00:59:45.150610000 Z
+subjects_026:
+  id: 118
+  code: EAD
+  description: Engineering Applied Sci-Davis
+  created_at: 2013-08-06 01:01:24.430720000 Z
+  updated_at: 2013-08-06 01:01:24.430720000 Z
+subjects_027:
+  id: 132
+  code: BUAW
+  description: '*Business Administration'
+  created_at: 2013-08-06 01:07:00.704814000 Z
+  updated_at: 2013-08-06 01:07:00.704814000 Z
+subjects_028:
+  id: 39
+  code: BST
+  description: Biostatistics
+  created_at: 2013-08-06 00:58:02.660154000 Z
+  updated_at: 2013-08-06 00:58:02.660154000 Z
+subjects_029:
+  id: 85
+  code: ECM
+  description: Engineering Chemical-Materials
+  created_at: 2013-08-06 00:59:51.026502000 Z
+  updated_at: 2013-08-06 00:59:51.026502000 Z
+subjects_030:
+  id: 131
+  code: BPT
+  description: Biophotonics
+  created_at: 2013-08-06 01:05:40.732135000 Z
+  updated_at: 2013-08-06 01:05:40.732135000 Z
+subjects_031:
+  id: 103
+  code: AHI
+  description: Art History
+  created_at: 2013-08-06 01:00:40.557617000 Z
+  updated_at: 2013-08-06 01:00:40.557617000 Z
+subjects_032:
+  id: 127
+  code: ARB
+  description: Arabic
+  created_at: 2013-08-06 01:04:10.519952000 Z
+  updated_at: 2013-08-06 01:04:10.519952000 Z
+subjects_033:
+  id: 4
+  code: PSC
+  description: Psychology
+  created_at: 2013-08-05 22:57:53.004957000 Z
+  updated_at: 2013-08-05 22:57:53.004957000 Z
+subjects_034:
+  id: 130
+  code: MIC
+  description: Microbiology
+  created_at: 2013-08-06 01:04:42.846123000 Z
+  updated_at: 2013-08-06 01:04:42.846123000 Z
+subjects_035:
   id: 1
   code: HIS
   description: History
+  created_at: 2013-08-02 06:42:10.117552000 Z
+  updated_at: 2013-08-02 06:42:10.117552000 Z
+subjects_036:
+  id: 129
+  code: BIT
+  description: Biotechnology
+  created_at: 2013-08-06 01:04:42.619702000 Z
+  updated_at: 2013-08-06 01:04:42.619702000 Z
+subjects_037:
+  id: 73
+  code: BPH
+  description: Biophysics (Graduate Group)
+  created_at: 2013-08-06 00:59:32.708451000 Z
+  updated_at: 2013-08-06 00:59:32.708451000 Z
+subjects_038:
+  id: 46
+  code: BCM
+  description: Med - Biological Chemistry
+  created_at: 2013-08-06 00:58:08.240946000 Z
+  updated_at: 2013-08-06 00:58:08.240946000 Z
+subjects_039:
+  id: 128
+  code: AST
+  description: Astronomy
+  created_at: 2013-08-06 01:04:14.479082000 Z
+  updated_at: 2013-08-06 01:04:14.479082000 Z
+subjects_040:
+  id: 92
+  code: ASA
+  description: Asian American Studies
+  created_at: 2013-08-06 01:00:04.777276000 Z
+  updated_at: 2013-08-06 01:00:04.777276000 Z
+subjects_041:
+  id: 89
+  code: APC
+  description: VM Anatomy, Physiol & Cell Bio
+  created_at: 2013-08-06 01:00:03.086095000 Z
+  updated_at: 2013-08-06 01:00:03.086095000 Z
+subjects_042:
+  id: 125
+  code: ANG
+  description: Animal Genetics
+  created_at: 2013-08-06 01:02:16.211555000 Z
+  updated_at: 2013-08-06 01:02:16.211555000 Z
+subjects_043:
+  id: 32
+  code: ECL
+  description: Ecology
+  created_at: 2013-08-06 00:57:57.716920000 Z
+  updated_at: 2013-08-06 00:57:57.716920000 Z
+subjects_044:
+  id: 126
+  code: CNS
+  description: Consumer Sciences
+  created_at: 2013-08-06 01:02:58.133052000 Z
+  updated_at: 2013-08-06 01:02:58.133052000 Z
+subjects_045:
+  id: 26
+  code: CMN
+  description: Communication
+  created_at: 2013-08-06 00:57:50.056757000 Z
+  updated_at: 2013-08-06 00:57:50.056757000 Z
+subjects_046:
+  id: 124
+  code: ANE
+  description: Med - Anesthesiology
+  created_at: 2013-08-06 01:02:13.178258000 Z
+  updated_at: 2013-08-06 01:02:13.178258000 Z
+subjects_047:
+  id: 123
+  code: NSC
+  description: Neuroscience (Graduate Group)
+  created_at: 2013-08-06 01:01:53.675437000 Z
+  updated_at: 2013-08-06 01:01:53.675437000 Z
+subjects_048:
+  id: 72
+  code: ESP
+  description: Environmental Science & Policy
+  created_at: 2013-08-06 00:59:16.004435000 Z
+  updated_at: 2013-08-06 00:59:16.004435000 Z
+subjects_049:
+  id: 91
+  code: LDA
+  description: Landscape Architecture
+  created_at: 2013-08-06 01:00:04.093583000 Z
+  updated_at: 2013-08-06 01:00:04.093583000 Z
+subjects_050:
+  id: 90
+  code: EME
+  description: Engineering Mechanical
+  created_at: 2013-08-06 01:00:03.334411000 Z
+  updated_at: 2013-08-06 01:00:03.334411000 Z
+subjects_051:
+  id: 68
+  code: POL
+  description: Political Science
+  created_at: 2013-08-06 00:59:14.632380000 Z
+  updated_at: 2013-08-06 00:59:14.632380000 Z
+subjects_052:
+  id: 121
+  code: GAS
+  description: 'Med - Intrl: Gastroenterology'
+  created_at: 2013-08-06 01:01:52.404252000 Z
+  updated_at: 2013-08-06 01:01:52.404252000 Z
+subjects_053:
+  id: 56
+  code: ART
+  description: Art Studio
+  created_at: 2013-08-06 00:58:15.985875000 Z
+  updated_at: 2013-08-06 00:58:15.985875000 Z
+subjects_054:
+  id: 17
+  code: JPN
+  description: Japanese
+  created_at: 2013-08-06 00:57:34.047332000 Z
+  updated_at: 2013-08-06 00:57:34.047332000 Z
+subjects_055:
+  id: 28
+  code: PFS
+  description: Performance Studies (Grad Grp)
+  created_at: 2013-08-06 00:57:56.104979000 Z
+  updated_at: 2013-08-06 00:57:56.104979000 Z
+subjects_056:
+  id: 64
+  code: DVM
+  description: Veterinary Clinical Rotation
+  created_at: 2013-08-06 00:59:00.864609000 Z
+  updated_at: 2013-08-06 00:59:00.864609000 Z
+subjects_057:
+  id: 75
+  code: UWP
+  description: University Writing Program
+  created_at: 2013-08-06 00:59:34.693358000 Z
+  updated_at: 2013-08-06 00:59:34.693358000 Z
+subjects_058:
+  id: 25
+  code: LIN
+  description: Linguistics
+  created_at: 2013-08-06 00:57:49.740463000 Z
+  updated_at: 2013-08-06 00:57:49.740463000 Z
+subjects_059:
+  id: 2
+  code: MAE
+  description: Engineering Mechanical & Aero
+  created_at: 2013-08-05 22:50:28.550840000 Z
+  updated_at: 2013-08-05 22:50:28.550840000 Z
+subjects_060:
+  id: 107
+  code: SPA
+  description: Spanish
+  created_at: 2013-08-06 01:01:02.645375000 Z
+  updated_at: 2013-08-06 01:01:02.645375000 Z
+subjects_061:
+  id: 120
+  code: NSU
+  description: Med - Neurosurgery
+  created_at: 2013-08-06 01:01:43.604095000 Z
+  updated_at: 2013-08-06 01:01:43.604095000 Z
+subjects_062:
+  id: 20
+  code: FAP
+  description: Med - Family Practice
+  created_at: 2013-08-06 00:57:34.828147000 Z
+  updated_at: 2013-08-06 00:57:34.828147000 Z
+subjects_063:
+  id: 84
+  code: EMS
+  description: Engineering Materials Science
+  created_at: 2013-08-06 00:59:50.994622000 Z
+  updated_at: 2013-08-06 00:59:50.994622000 Z
+subjects_064:
+  id: 88
+  code: GEO
+  description: Geography
+  created_at: 2013-08-06 01:00:02.801688000 Z
+  updated_at: 2013-08-06 01:00:02.801688000 Z
+subjects_065:
+  id: 29
+  code: PLS
+  description: Plant Science
+  created_at: 2013-08-06 00:57:56.420753000 Z
+  updated_at: 2013-08-06 00:57:56.420753000 Z
+subjects_066:
+  id: 119
+  code: WLD
+  description: Workload
+  created_at: 2013-08-06 01:01:42.344639000 Z
+  updated_at: 2013-08-06 01:01:42.344639000 Z
+subjects_067:
+  id: 34
+  code: HDE
+  description: Human Development
+  created_at: 2013-08-06 00:57:58.639027000 Z
+  updated_at: 2013-08-06 00:57:58.639027000 Z
+subjects_068:
+  id: 59
+  code: ECS
+  description: Engineering Computer Science
+  created_at: 2013-08-06 00:58:52.682309000 Z
+  updated_at: 2013-08-06 00:58:52.682309000 Z
+subjects_069:
+  id: 105
+  code: GGG
+  description: Genetics (Graduate Group)
+  created_at: 2013-08-06 01:00:42.917547000 Z
+  updated_at: 2013-08-06 01:00:42.917547000 Z
+subjects_070:
+  id: 61
+  code: MAT
+  description: Mathematics
+  created_at: 2013-08-06 00:58:57.805870000 Z
+  updated_at: 2013-08-06 00:58:57.805870000 Z
+subjects_071:
+  id: 81
+  code: CLA
+  description: Classics
+  created_at: 2013-08-06 00:59:44.452219000 Z
+  updated_at: 2013-08-06 00:59:44.452219000 Z
+subjects_072:
+  id: 78
+  code: RST
+  description: Religious Studies
+  created_at: 2013-08-06 00:59:39.967248000 Z
+  updated_at: 2013-08-06 00:59:39.967248000 Z
+subjects_073:
+  id: 5
+  code: STA
+  description: Statistics
+  created_at: 2013-08-05 22:57:53.330711000 Z
+  updated_at: 2013-08-05 22:57:53.330711000 Z
+subjects_074:
+  id: 31
+  code: ENL
+  description: English
+  created_at: 2013-08-06 00:57:57.354215000 Z
+  updated_at: 2013-08-06 00:57:57.354215000 Z
+subjects_075:
+  id: 112
+  code: HUM
+  description: Humanities
+  created_at: 2013-08-06 01:01:19.853312000 Z
+  updated_at: 2013-08-06 01:01:19.853312000 Z
+subjects_076:
+  id: 11
+  code: PHY
+  description: Physics
+  created_at: 2013-08-06 00:57:29.922992000 Z
+  updated_at: 2013-08-06 00:57:29.922992000 Z
+subjects_077:
+  id: 7
+  code: AMS
+  description: American Studies
+  created_at: 2013-08-05 22:57:54.004084000 Z
+  updated_at: 2013-08-05 22:57:54.004084000 Z
+subjects_078:
+  id: 117
+  code: IMM
+  description: Immunology (Graduate Group)
+  created_at: 2013-08-06 01:01:23.432772000 Z
+  updated_at: 2013-08-06 01:01:23.432772000 Z
+subjects_079:
+  id: 19
+  code: BIS
+  description: Biological Sciences
+  created_at: 2013-08-06 00:57:34.455717000 Z
+  updated_at: 2013-08-06 00:57:34.455717000 Z
+subjects_080:
+  id: 116
+  code: PMI
+  description: VM Pathology, Microbiol &Immun
+  created_at: 2013-08-06 01:01:21.380722000 Z
+  updated_at: 2013-08-06 01:01:21.380722000 Z
+subjects_081:
+  id: 114
+  code: ESM
+  description: Environmental Sci & Management
+  created_at: 2013-08-06 01:01:20.944400000 Z
+  updated_at: 2013-08-06 01:01:20.944400000 Z
+subjects_082:
+  id: 50
+  code: FRE
+  description: French
+  created_at: 2013-08-06 00:58:11.027389000 Z
+  updated_at: 2013-08-06 00:58:11.027389000 Z
+subjects_083:
+  id: 111
+  code: ITA
+  description: Italian
+  created_at: 2013-08-06 01:01:18.914177000 Z
+  updated_at: 2013-08-06 01:01:18.914177000 Z
+subjects_084:
+  id: 110
+  code: NAS
+  description: Native American Studies
+  created_at: 2013-08-06 01:01:18.188530000 Z
+  updated_at: 2013-08-06 01:01:18.188530000 Z
+subjects_085:
+  id: 86
+  code: EDU
+  description: Education
+  created_at: 2013-08-06 00:59:51.516195000 Z
+  updated_at: 2013-08-06 00:59:51.516195000 Z
+subjects_086:
+  id: 44
+  code: NPB
+  description: Neurobiology,Physio & Behavior
+  created_at: 2013-08-06 00:58:07.528253000 Z
+  updated_at: 2013-08-06 00:58:07.528253000 Z
+subjects_087:
+  id: 109
+  code: NUT
+  description: Nutrition
+  created_at: 2013-08-06 01:01:04.304808000 Z
+  updated_at: 2013-08-06 01:01:04.304808000 Z
+subjects_088:
+  id: 108
+  code: FMS
+  description: Film Studies
+  created_at: 2013-08-06 01:01:02.881154000 Z
+  updated_at: 2013-08-06 01:01:02.881154000 Z
+subjects_089:
+  id: 3
+  code: GER
+  description: German
+  created_at: 2013-08-05 22:57:52.354033000 Z
+  updated_at: 2013-08-05 22:57:52.354033000 Z
+subjects_090:
+  id: 14
+  code: MGT
+  description: Management
+  created_at: 2013-08-06 00:57:31.307229000 Z
+  updated_at: 2013-08-06 00:57:31.307229000 Z
+subjects_091:
+  id: 106
+  code: RUS
+  description: Russian
+  created_at: 2013-08-06 01:01:02.375106000 Z
+  updated_at: 2013-08-06 01:01:02.375106000 Z
+subjects_092:
+  id: 40
+  code: MUS
+  description: Music
+  created_at: 2013-08-06 00:58:06.807039000 Z
+  updated_at: 2013-08-06 00:58:06.807039000 Z
+subjects_093:
+  id: 104
+  code: ANB
+  description: Animal Behavior (Graduate Gp)
+  created_at: 2013-08-06 01:00:41.779419000 Z
+  updated_at: 2013-08-06 01:00:41.779419000 Z
+subjects_094:
+  id: 58
+  code: SOC
+  description: Sociology
+  created_at: 2013-08-06 00:58:52.613631000 Z
+  updated_at: 2013-08-06 00:58:52.613631000 Z
+subjects_095:
+  id: 22
+  code: MDS
+  description: Med - Medical Science
+  created_at: 2013-08-06 00:57:49.061103000 Z
+  updated_at: 2013-08-06 00:57:49.061103000 Z
+subjects_096:
+  id: 38
+  code: NRS
+  description: Nursing
+  created_at: 2013-08-06 00:57:59.713976000 Z
+  updated_at: 2013-08-06 00:57:59.713976000 Z
+subjects_097:
+  id: 47
+  code: PBI
+  description: Plant Biology (Graduate Group)
+  created_at: 2013-08-06 00:58:08.620433000 Z
+  updated_at: 2013-08-06 00:58:08.620433000 Z
+subjects_098:
+  id: 97
+  code: LAT
+  description: Latin
+  created_at: 2013-08-06 01:00:10.934980000 Z
+  updated_at: 2013-08-06 01:00:10.934980000 Z
+subjects_099:
+  id: 101
+  code: GRK
+  description: Greek
+  created_at: 2013-08-06 01:00:25.175394000 Z
+  updated_at: 2013-08-06 01:00:25.175394000 Z
+subjects_100:
+  id: 100
+  code: POR
+  description: Portuguese
+  created_at: 2013-08-06 01:00:24.035012000 Z
+  updated_at: 2013-08-06 01:00:24.035012000 Z
+subjects_101:
+  id: 99
+  code: PBG
+  description: Population Biology
+  created_at: 2013-08-06 01:00:23.738010000 Z
+  updated_at: 2013-08-06 01:00:23.738010000 Z
+subjects_102:
+  id: 98
+  code: IRE
+  description: International Relations
+  created_at: 2013-08-06 01:00:11.241791000 Z
+  updated_at: 2013-08-06 01:00:11.241791000 Z
+subjects_103:
+  id: 45
+  code: EVE
+  description: Evolution and Ecology
+  created_at: 2013-08-06 00:58:07.885419000 Z
+  updated_at: 2013-08-06 00:58:07.885419000 Z
+subjects_104:
+  id: 15
+  code: MGB
+  description: Management Work Prof Bay Area
+  created_at: 2013-08-06 00:57:32.033606000 Z
+  updated_at: 2013-08-06 00:57:32.033606000 Z
+subjects_105:
+  id: 96
+  code: SUR
+  description: Med - Surgery
+  created_at: 2013-08-06 01:00:07.318774000 Z
+  updated_at: 2013-08-06 01:00:07.318774000 Z
+subjects_106:
+  id: 95
+  code: DER
+  description: Med - Dermatology
+  created_at: 2013-08-06 01:00:07.065041000 Z
+  updated_at: 2013-08-06 01:00:07.065041000 Z
+subjects_107:
+  id: 94
+  code: ENT
+  description: Entomology
+  created_at: 2013-08-06 01:00:06.248049000 Z
+  updated_at: 2013-08-06 01:00:06.248049000 Z
+subjects_108:
+  id: 18
+  code: EEC
+  description: Engineering Electrical & Compu
+  created_at: 2013-08-06 00:57:34.379675000 Z
+  updated_at: 2013-08-06 00:57:34.379675000 Z
+subjects_109:
+  id: 63
+  code: GEL
+  description: Geology
+  created_at: 2013-08-06 00:59:00.105662000 Z
+  updated_at: 2013-08-06 00:59:00.105662000 Z
+subjects_110:
+  id: 93
+  code: FRS
+  description: Freshman Seminar
+  created_at: 2013-08-06 01:00:05.257832000 Z
+  updated_at: 2013-08-06 01:00:05.257832000 Z
+subjects_111:
+  id: 16
+  code: MGP
+  description: Management Working Professionl
+  created_at: 2013-08-06 00:57:32.696821000 Z
+  updated_at: 2013-08-06 00:57:32.696821000 Z
+subjects_112:
+  id: 87
+  code: ETX
+  description: Environmental Toxicology
+  created_at: 2013-08-06 01:00:02.277159000 Z
+  updated_at: 2013-08-06 01:00:02.277159000 Z
+subjects_113:
+  id: 83
+  code: PED
+  description: Med - Pediatrics
+  created_at: 2013-08-06 00:59:50.758964000 Z
+  updated_at: 2013-08-06 00:59:50.758964000 Z
+subjects_114:
+  id: 69
+  code: VEN
+  description: Viticulture & Enology
+  created_at: 2013-08-06 00:59:15.180038000 Z
+  updated_at: 2013-08-06 00:59:15.180038000 Z
+subjects_115:
+  id: 65
+  code: ICL
+  description: International Commercial Law
+  created_at: 2013-08-06 00:59:02.177764000 Z
+  updated_at: 2013-08-06 00:59:02.177764000 Z
+subjects_116:
+  id: 42
+  code: IST
+  description: Integrated Studies
+  created_at: 2013-08-06 00:58:07.183593000 Z
+  updated_at: 2013-08-06 00:58:07.183593000 Z
+subjects_117:
+  id: 48
+  code: SPH
+  description: Med - Public Health Sciences
+  created_at: 2013-08-06 00:58:10.354561000 Z
+  updated_at: 2013-08-06 00:58:10.354561000 Z
+subjects_118:
+  id: 80
+  code: FOR
+  description: Forensic Science
+  created_at: 2013-08-06 00:59:43.521322000 Z
+  updated_at: 2013-08-06 00:59:43.521322000 Z
+subjects_119:
+  id: 79
+  code: OBG
+  description: Med - Obstetrics & Gynecology
+  created_at: 2013-08-06 00:59:40.847557000 Z
+  updated_at: 2013-08-06 00:59:40.847557000 Z
+subjects_120:
+  id: 52
+  code: PHI
+  description: Philosophy
+  created_at: 2013-08-06 00:58:11.383200000 Z
+  updated_at: 2013-08-06 00:58:11.383200000 Z
+subjects_121:
+  id: 12
+  code: WMS
+  description: Women's Studies
+  created_at: 2013-08-06 00:57:30.862123000 Z
+  updated_at: 2013-08-06 00:57:30.862123000 Z
+subjects_122:
+  id: 33
+  code: STS
+  description: Science & Technology Studies
+  created_at: 2013-08-06 00:57:57.743315000 Z
+  updated_at: 2013-08-06 00:57:57.743315000 Z
+subjects_123:
+  id: 71
+  code: CST
+  description: Cultural Studies
+  created_at: 2013-08-06 00:59:15.968584000 Z
+  updated_at: 2013-08-06 00:59:15.968584000 Z
+subjects_124:
+  id: 10
+  code: MSA
+  description: Middle East/South Asian Std
+  created_at: 2013-08-06 00:57:29.254498000 Z
+  updated_at: 2013-08-06 00:57:29.254498000 Z
+subjects_125:
+  id: 67
+  code: PHE
+  description: Physical Education
+  created_at: 2013-08-06 00:59:03.317060000 Z
+  updated_at: 2013-08-06 00:59:03.317060000 Z
+subjects_126:
+  id: 66
+  code: MST
+  description: Medieval Studies
+  created_at: 2013-08-06 00:59:02.845120000 Z
+  updated_at: 2013-08-06 00:59:02.845120000 Z
+subjects_127:
+  id: 62
+  code: ACC
+  description: Professional Accountancy
+  created_at: 2013-08-06 00:58:59.176571000 Z
+  updated_at: 2013-08-06 00:58:59.176571000 Z
+subjects_128:
+  id: 41
+  code: SAS
+  description: Science and Society
+  created_at: 2013-08-06 00:58:07.150438000 Z
+  updated_at: 2013-08-06 00:58:07.150438000 Z
+subjects_129:
+  id: 57
+  code: TCS
+  description: Technocultural Studies
+  created_at: 2013-08-06 00:58:16.020125000 Z
+  updated_at: 2013-08-06 00:58:16.020125000 Z
+subjects_130:
+  id: 55
+  code: CRD
+  description: Community & Regional Develpmnt
+  created_at: 2013-08-06 00:58:14.092405000 Z
+  updated_at: 2013-08-06 00:58:14.092405000 Z
+subjects_131:
+  id: 54
+  code: SSC
+  description: Soil Science
+  created_at: 2013-08-06 00:58:12.989052000 Z
+  updated_at: 2013-08-06 00:58:12.989052000 Z
+subjects_132:
+  id: 53
+  code: HYD
+  description: Hydrologic Science
+  created_at: 2013-08-06 00:58:12.681484000 Z
+  updated_at: 2013-08-06 00:58:12.681484000 Z
+subjects_133:
+  id: 51
+  code: HEB
+  description: Hebrew
+  created_at: 2013-08-06 00:58:11.349738000 Z
+  updated_at: 2013-08-06 00:58:11.349738000 Z
+subjects_134:
+  id: 43
+  code: TTP
+  description: Transportation Tech & Policy
+  created_at: 2013-08-06 00:58:07.499076000 Z
+  updated_at: 2013-08-06 00:58:07.499076000 Z
+subjects_135:
+  id: 35
+  code: IMD
+  description: Med - Internal Medicine
+  created_at: 2013-08-06 00:57:59.008697000 Z
+  updated_at: 2013-08-06 00:57:59.008697000 Z
+subjects_136:
+  id: 30
+  code: ABG
+  description: Animal Biology Grad Gp
+  created_at: 2013-08-06 00:57:56.759471000 Z
+  updated_at: 2013-08-06 00:57:56.759471000 Z
+subjects_137:
+  id: 24
+  code: WFC
+  description: Wildlife, Fish & Conserv Biol
+  created_at: 2013-08-06 00:57:49.400988000 Z
+  updated_at: 2013-08-06 00:57:49.400988000 Z
+subjects_138:
+  id: 21
+  code: ENG
+  description: Engineering
+  created_at: 2013-08-06 00:57:48.987466000 Z
+  updated_at: 2013-08-06 00:57:48.987466000 Z
+subjects_139:
+  id: 9
+  code: CRI
+  description: Critical Theory (Desig Emphas)
+  created_at: 2013-08-06 00:57:28.861855000 Z
+  updated_at: 2013-08-06 00:57:28.861855000 Z

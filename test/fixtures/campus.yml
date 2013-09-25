@@ -1,9 +1,7 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   code: MyString
-#   description: MyString
-# 
-# two:
-#   code: MyString
-#   description: MyString
+---
+campus_001:
+  id: 1
+  code: M
+  description: Main Campus - Davis
+  created_at: 2013-08-02 06:43:26.339195000 Z
+  updated_at: 2013-08-02 06:43:26.339195000 Z

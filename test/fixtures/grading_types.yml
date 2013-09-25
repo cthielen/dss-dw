@@ -1,9 +1,7 @@
-# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-# 
-# one:
-#   code: MyString
-#   description: MyString
-# 
-# two:
-#   code: MyString
-#   description: MyString
+---
+grading_types_001:
+  id: 1
+  code: N
+  description: Normal/Letter Grading
+  created_at: 2013-08-02 06:49:42.896641000 Z
+  updated_at: 2013-08-02 06:49:42.896641000 Z

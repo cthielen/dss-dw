@@ -1,4 +1,631 @@
-winter_quarter_2013:
+---
+terms_001:
+  id: 51
+  code: '200701'
+  description: Winter Quarter 2007
+  created_at: 2013-08-06 00:58:12.651691000 Z
+  updated_at: 2013-08-06 00:58:12.651691000 Z
+terms_002:
+  id: 22
+  code: '197910'
+  description: Fall Quarter 1979
+  created_at: 2013-08-06 00:57:29.928621000 Z
+  updated_at: 2013-08-06 00:57:29.928621000 Z
+terms_003:
+  id: 12
+  code: '199301'
+  description: Winter Quarter 1993
+  created_at: 2013-08-05 22:57:53.705111000 Z
+  updated_at: 2013-08-05 22:57:53.705111000 Z
+terms_004:
+  id: 5
+  code: '199404'
+  description: Extra Session 1994
+  created_at: 2013-08-02 07:04:17.753023000 Z
+  updated_at: 2013-08-02 07:04:17.753023000 Z
+terms_005:
+  id: 87
+  code: '198610'
+  description: Fall Quarter 1986
+  created_at: 2013-08-06 01:01:17.915794000 Z
+  updated_at: 2013-08-06 01:01:17.915794000 Z
+terms_006:
+  id: 73
+  code: '198910'
+  description: Fall Quarter 1989
+  created_at: 2013-08-06 00:59:36.993255000 Z
+  updated_at: 2013-08-06 00:59:36.993255000 Z
+terms_007:
+  id: 105
+  code: '198905'
+  description: Summer Session 1 1989
+  created_at: 2013-08-06 01:12:52.225389000 Z
+  updated_at: 2013-08-06 01:12:52.225389000 Z
+terms_008:
+  id: 86
+  code: '200110'
+  description: Fall Quarter 2001
+  created_at: 2013-08-06 01:00:59.656281000 Z
+  updated_at: 2013-08-06 01:00:59.656281000 Z
+terms_009:
+  id: 44
+  code: '200601'
+  description: Winter Quarter 2006
+  created_at: 2013-08-06 00:57:59.015087000 Z
+  updated_at: 2013-08-06 00:57:59.015087000 Z
+terms_010:
+  id: 29
+  code: '201201'
+  description: Winter Quarter 2012
+  created_at: 2013-08-06 00:57:31.668232000 Z
+  updated_at: 2013-08-06 00:57:31.668232000 Z
+terms_011:
+  id: 68
+  code: '200401'
+  description: Winter Quarter 2004
+  created_at: 2013-08-06 00:59:16.685521000 Z
+  updated_at: 2013-08-06 00:59:16.685521000 Z
+terms_012:
+  id: 36
+  code: '200301'
+  description: Winter Quarter 2003
+  created_at: 2013-08-06 00:57:49.368503000 Z
+  updated_at: 2013-08-06 00:57:49.368503000 Z
+terms_013:
+  id: 64
+  code: '200206'
+  description: Summer Special Session 2002
+  created_at: 2013-08-06 00:59:02.183843000 Z
+  updated_at: 2013-08-06 00:59:02.183843000 Z
+terms_014:
+  id: 59
+  code: '200001'
+  description: Winter Quarter 2000
+  created_at: 2013-08-06 00:58:54.840965000 Z
+  updated_at: 2013-08-06 00:58:54.840965000 Z
+terms_015:
+  id: 34
+  code: '200610'
+  description: Fall Quarter 2006
+  created_at: 2013-08-06 00:57:34.462661000 Z
+  updated_at: 2013-08-06 00:57:34.462661000 Z
+terms_016:
+  id: 69
+  code: '200510'
+  description: Fall Quarter 2005
+  created_at: 2013-08-06 00:59:17.192000000 Z
+  updated_at: 2013-08-06 00:59:17.192000000 Z
+terms_017:
+  id: 66
+  code: '201001'
+  description: Winter Quarter 2010
+  created_at: 2013-08-06 00:59:15.716761000 Z
+  updated_at: 2013-08-06 00:59:15.716761000 Z
+terms_018:
+  id: 26
+  code: '199201'
+  description: Winter Quarter 1992
+  created_at: 2013-08-06 00:57:30.868026000 Z
+  updated_at: 2013-08-06 00:57:30.868026000 Z
+terms_019:
+  id: 42
+  code: '199701'
+  description: Winter Quarter 1997
+  created_at: 2013-08-06 00:57:55.748818000 Z
+  updated_at: 2013-08-06 00:57:55.748818000 Z
+terms_020:
+  id: 27
+  code: '199410'
+  description: Fall Quarter 1994
+  created_at: 2013-08-06 00:57:30.894586000 Z
+  updated_at: 2013-08-06 00:57:30.894586000 Z
+terms_021:
+  id: 63
+  code: '201010'
+  description: Fall Quarter 2010
+  created_at: 2013-08-06 00:59:00.870416000 Z
+  updated_at: 2013-08-06 00:59:00.870416000 Z
+terms_022:
+  id: 49
+  code: '199610'
+  description: Fall Quarter 1996
+  created_at: 2013-08-06 00:58:09.354911000 Z
+  updated_at: 2013-08-06 00:58:09.354911000 Z
+terms_023:
+  id: 94
+  code: '198503'
+  description: Spring Quarter 1985
+  created_at: 2013-08-06 01:02:30.304995000 Z
+  updated_at: 2013-08-06 01:02:30.304995000 Z
+terms_024:
+  id: 95
+  code: '198010'
+  description: Fall Quarter 1980
+  created_at: 2013-08-06 01:02:39.577146000 Z
+  updated_at: 2013-08-06 01:02:39.577146000 Z
+terms_025:
+  id: 23
+  code: '199310'
+  description: Fall Quarter 1993
+  created_at: 2013-08-06 00:57:30.213725000 Z
+  updated_at: 2013-08-06 00:57:30.213725000 Z
+terms_026:
+  id: 39
+  code: '199210'
+  description: Fall Quarter 1992
+  created_at: 2013-08-06 00:57:49.777208000 Z
+  updated_at: 2013-08-06 00:57:49.777208000 Z
+terms_027:
+  id: 3
+  code: '200410'
+  description: Fall Quarter 2004
+  created_at: 2013-08-02 07:04:17.286257000 Z
+  updated_at: 2013-08-02 07:04:17.286257000 Z
+terms_028:
+  id: 58
+  code: '199801'
+  description: Winter Quarter 1998
+  created_at: 2013-08-06 00:58:53.900427000 Z
+  updated_at: 2013-08-06 00:58:53.900427000 Z
+terms_029:
+  id: 37
+  code: '201101'
+  description: Winter Quarter 2011
+  created_at: 2013-08-06 00:57:49.414196000 Z
+  updated_at: 2013-08-06 00:57:49.414196000 Z
+terms_030:
+  id: 31
+  code: '200910'
+  description: Fall Quarter 2009
+  created_at: 2013-08-06 00:57:32.040059000 Z
+  updated_at: 2013-08-06 00:57:32.040059000 Z
+terms_031:
+  id: 10
+  code: '200503'
+  description: Spring Quarter 2005
+  created_at: 2013-08-05 22:57:51.963118000 Z
+  updated_at: 2013-08-05 22:57:51.963118000 Z
+terms_032:
+  id: 4
+  code: '199810'
+  description: Fall Quarter 1998
+  created_at: 2013-08-02 07:04:17.402069000 Z
+  updated_at: 2013-08-02 07:04:17.402069000 Z
+terms_033:
+  id: 35
+  code: '200101'
+  description: Winter Quarter 2001
+  created_at: 2013-08-06 00:57:48.995497000 Z
+  updated_at: 2013-08-06 00:57:48.995497000 Z
+terms_034:
+  id: 104
+  code: '200406'
+  description: Summer Special Session 2004
+  created_at: 2013-08-06 01:09:07.008630000 Z
+  updated_at: 2013-08-06 01:09:07.008630000 Z
+terms_035:
+  id: 2
+  code: '200310'
+  description: Fall Quarter 2003
+  created_at: 2013-08-02 06:48:12.681471000 Z
+  updated_at: 2013-08-02 06:48:12.681471000 Z
+terms_036:
+  id: 48
+  code: '199601'
+  description: Winter Quarter 1996
+  created_at: 2013-08-06 00:58:08.960920000 Z
+  updated_at: 2013-08-06 00:58:08.960920000 Z
+terms_037:
+  id: 33
+  code: '200901'
+  description: Winter Quarter 2009
+  created_at: 2013-08-06 00:57:34.386362000 Z
+  updated_at: 2013-08-06 00:57:34.386362000 Z
+terms_038:
+  id: 74
+  code: '200603'
+  description: Spring Quarter 2006
+  created_at: 2013-08-06 00:59:37.268317000 Z
+  updated_at: 2013-08-06 00:59:37.268317000 Z
+terms_039:
+  id: 103
+  code: '200407'
+  description: Summer Session 2 2004
+  created_at: 2013-08-06 01:08:50.218971000 Z
+  updated_at: 2013-08-06 01:08:50.218971000 Z
+terms_040:
+  id: 61
+  code: '199510'
+  description: Fall Quarter 1995
+  created_at: 2013-08-06 00:59:00.111929000 Z
+  updated_at: 2013-08-06 00:59:00.111929000 Z
+terms_041:
+  id: 101
+  code: '199103'
+  description: Spring Quarter 1991
+  created_at: 2013-08-06 01:06:02.716308000 Z
+  updated_at: 2013-08-06 01:06:02.716308000 Z
+terms_042:
+  id: 41
+  code: '201103'
+  description: Spring Quarter 2011
+  created_at: 2013-08-06 00:57:51.286132000 Z
+  updated_at: 2013-08-06 00:57:51.286132000 Z
+terms_043:
+  id: 20
+  code: '201110'
+  description: Fall Quarter 2011
+  created_at: 2013-08-06 00:57:29.565642000 Z
+  updated_at: 2013-08-06 00:57:29.565642000 Z
+terms_044:
+  id: 91
+  code: '199903'
+  description: Spring Quarter 1999
+  created_at: 2013-08-06 01:01:44.822401000 Z
+  updated_at: 2013-08-06 01:01:44.822401000 Z
+terms_045:
+  id: 11
+  code: '201210'
+  description: Fall Quarter 2012
+  created_at: 2013-08-05 22:57:52.362837000 Z
+  updated_at: 2013-08-05 22:57:52.362837000 Z
+terms_046:
+  id: 6
+  code: '199910'
+  description: Fall Quarter 1999
+  created_at: 2013-08-05 22:50:28.609631000 Z
+  updated_at: 2013-08-05 22:50:28.609631000 Z
+terms_047:
+  id: 16
+  code: '199703'
+  description: Spring Quarter 1997
+  created_at: 2013-08-06 00:57:28.487938000 Z
+  updated_at: 2013-08-06 00:57:28.487938000 Z
+terms_048:
+  id: 7
+  code: '200710'
+  description: Fall Quarter 2007
+  created_at: 2013-08-05 22:57:51.622099000 Z
+  updated_at: 2013-08-05 22:57:51.622099000 Z
+terms_049:
+  id: 102
+  code: '199303'
+  description: Spring Quarter 1993
+  created_at: 2013-08-06 01:07:10.579355000 Z
+  updated_at: 2013-08-06 01:07:10.579355000 Z
+terms_050:
+  id: 70
+  code: '198803'
+  description: Spring Quarter 1988
+  created_at: 2013-08-06 00:59:32.715774000 Z
+  updated_at: 2013-08-06 00:59:32.715774000 Z
+terms_051:
+  id: 46
+  code: '200403'
+  description: Spring Quarter 2004
+  created_at: 2013-08-06 00:58:02.666183000 Z
+  updated_at: 2013-08-06 00:58:02.666183000 Z
+terms_052:
+  id: 21
+  code: '199603'
+  description: Spring Quarter 1996
+  created_at: 2013-08-06 00:57:29.858966000 Z
+  updated_at: 2013-08-06 00:57:29.858966000 Z
+terms_053:
+  id: 67
+  code: '200010'
+  description: Fall Quarter 2000
+  created_at: 2013-08-06 00:59:15.974932000 Z
+  updated_at: 2013-08-06 00:59:15.974932000 Z
+terms_054:
+  id: 9
+  code: '200501'
+  description: Winter Quarter 2005
+  created_at: 2013-08-05 22:57:51.907725000 Z
+  updated_at: 2013-08-05 22:57:51.907725000 Z
+terms_055:
+  id: 84
+  code: '198110'
+  description: Fall Quarter 1981
+  created_at: 2013-08-06 01:00:39.133163000 Z
+  updated_at: 2013-08-06 01:00:39.133163000 Z
+terms_056:
+  id: 14
+  code: '198201'
+  description: Winter Quarter 1982
+  created_at: 2013-08-05 22:57:54.680839000 Z
+  updated_at: 2013-08-05 22:57:54.680839000 Z
+terms_057:
+  id: 50
+  code: '200810'
+  description: Fall Quarter 2008
+  created_at: 2013-08-06 00:58:10.324810000 Z
+  updated_at: 2013-08-06 00:58:10.324810000 Z
+terms_058:
+  id: 8
+  code: '200210'
+  description: Fall Quarter 2002
+  created_at: 2013-08-05 22:57:51.649795000 Z
+  updated_at: 2013-08-05 22:57:51.649795000 Z
+terms_059:
   id: 1
-  code: 201301
+  code: '201301'
   description: Winter Quarter 2013
+  created_at: 2013-08-02 06:35:12.343540000 Z
+  updated_at: 2013-08-02 06:35:12.343540000 Z
+terms_060:
+  id: 24
+  code: '199901'
+  description: Winter Quarter 1999
+  created_at: 2013-08-06 00:57:30.241951000 Z
+  updated_at: 2013-08-06 00:57:30.241951000 Z
+terms_061:
+  id: 17
+  code: '200203'
+  description: Spring Quarter 2002
+  created_at: 2013-08-06 00:57:28.869172000 Z
+  updated_at: 2013-08-06 00:57:28.869172000 Z
+terms_062:
+  id: 28
+  code: '198710'
+  description: Fall Quarter 1987
+  created_at: 2013-08-06 00:57:31.645143000 Z
+  updated_at: 2013-08-06 00:57:31.645143000 Z
+terms_063:
+  id: 97
+  code: '198101'
+  description: Winter Quarter 1981
+  created_at: 2013-08-06 01:03:23.617220000 Z
+  updated_at: 2013-08-06 01:03:23.617220000 Z
+terms_064:
+  id: 32
+  code: '200003'
+  description: Spring Quarter 2000
+  created_at: 2013-08-06 00:57:33.042211000 Z
+  updated_at: 2013-08-06 00:57:33.042211000 Z
+terms_065:
+  id: 100
+  code: '198410'
+  description: Fall Quarter 1984
+  created_at: 2013-08-06 01:04:26.328267000 Z
+  updated_at: 2013-08-06 01:04:26.328267000 Z
+terms_066:
+  id: 99
+  code: '200705'
+  description: Summer Session 1 2007
+  created_at: 2013-08-06 01:04:14.688518000 Z
+  updated_at: 2013-08-06 01:04:14.688518000 Z
+terms_067:
+  id: 98
+  code: '198601'
+  description: Winter Quarter 1986
+  created_at: 2013-08-06 01:03:57.541773000 Z
+  updated_at: 2013-08-06 01:03:57.541773000 Z
+terms_068:
+  id: 88
+  code: '198510'
+  description: Fall Quarter 1985
+  created_at: 2013-08-06 01:01:41.890739000 Z
+  updated_at: 2013-08-06 01:01:41.890739000 Z
+terms_069:
+  id: 54
+  code: '200801'
+  description: Winter Quarter 2008
+  created_at: 2013-08-06 00:58:14.032372000 Z
+  updated_at: 2013-08-06 00:58:14.032372000 Z
+terms_070:
+  id: 47
+  code: '201003'
+  description: Spring Quarter 2010
+  created_at: 2013-08-06 00:58:07.891671000 Z
+  updated_at: 2013-08-06 00:58:07.891671000 Z
+terms_071:
+  id: 72
+  code: '198810'
+  description: Fall Quarter 1988
+  created_at: 2013-08-06 00:59:33.701641000 Z
+  updated_at: 2013-08-06 00:59:33.701641000 Z
+terms_072:
+  id: 96
+  code: '198403'
+  description: Spring Quarter 1984
+  created_at: 2013-08-06 01:02:40.883752000 Z
+  updated_at: 2013-08-06 01:02:40.883752000 Z
+terms_073:
+  id: 53
+  code: '199403'
+  description: Spring Quarter 1994
+  created_at: 2013-08-06 00:58:13.384557000 Z
+  updated_at: 2013-08-06 00:58:13.384557000 Z
+terms_074:
+  id: 77
+  code: '199001'
+  description: Winter Quarter 1990
+  created_at: 2013-08-06 00:59:43.983971000 Z
+  updated_at: 2013-08-06 00:59:43.983971000 Z
+terms_075:
+  id: 93
+  code: '199904'
+  description: Extra Session 1999
+  created_at: 2013-08-06 01:02:13.631313000 Z
+  updated_at: 2013-08-06 01:02:13.631313000 Z
+terms_076:
+  id: 62
+  code: '200803'
+  description: Spring Quarter 2008
+  created_at: 2013-08-06 00:59:00.626302000 Z
+  updated_at: 2013-08-06 00:59:00.626302000 Z
+terms_077:
+  id: 92
+  code: '200205'
+  description: Summer Session 1 2002
+  created_at: 2013-08-06 01:01:53.338196000 Z
+  updated_at: 2013-08-06 01:01:53.338196000 Z
+terms_078:
+  id: 45
+  code: '199401'
+  description: Winter Quarter 1994
+  created_at: 2013-08-06 00:57:59.335671000 Z
+  updated_at: 2013-08-06 00:57:59.335671000 Z
+terms_079:
+  id: 52
+  code: '200805'
+  description: Summer Session 1 2008
+  created_at: 2013-08-06 00:58:12.997104000 Z
+  updated_at: 2013-08-06 00:58:12.997104000 Z
+terms_080:
+  id: 90
+  code: '198310'
+  description: Fall Quarter 1983
+  created_at: 2013-08-06 01:01:43.611259000 Z
+  updated_at: 2013-08-06 01:01:43.611259000 Z
+terms_081:
+  id: 89
+  code: '198801'
+  description: Winter Quarter 1988
+  created_at: 2013-08-06 01:01:43.113168000 Z
+  updated_at: 2013-08-06 01:01:43.113168000 Z
+terms_082:
+  id: 15
+  code: '200703'
+  description: Spring Quarter 2007
+  created_at: 2013-08-05 22:57:55.053869000 Z
+  updated_at: 2013-08-05 22:57:55.053869000 Z
+terms_083:
+  id: 19
+  code: '201203'
+  description: Spring Quarter 2012
+  created_at: 2013-08-06 00:57:29.542483000 Z
+  updated_at: 2013-08-06 00:57:29.542483000 Z
+terms_084:
+  id: 43
+  code: '199710'
+  description: Fall Quarter 1997
+  created_at: 2013-08-06 00:57:58.645764000 Z
+  updated_at: 2013-08-06 00:57:58.645764000 Z
+terms_085:
+  id: 65
+  code: '200303'
+  description: Spring Quarter 2003
+  created_at: 2013-08-06 00:59:03.078467000 Z
+  updated_at: 2013-08-06 00:59:03.078467000 Z
+terms_086:
+  id: 71
+  code: '199501'
+  description: Winter Quarter 1995
+  created_at: 2013-08-06 00:59:33.180068000 Z
+  updated_at: 2013-08-06 00:59:33.180068000 Z
+terms_087:
+  id: 38
+  code: '200201'
+  description: Winter Quarter 2002
+  created_at: 2013-08-06 00:57:49.747369000 Z
+  updated_at: 2013-08-06 00:57:49.747369000 Z
+terms_088:
+  id: 56
+  code: '198303'
+  description: Spring Quarter 1983
+  created_at: 2013-08-06 00:58:51.998904000 Z
+  updated_at: 2013-08-06 00:58:51.998904000 Z
+terms_089:
+  id: 85
+  code: '200605'
+  description: Summer Session 1 2006
+  created_at: 2013-08-06 01:00:57.219138000 Z
+  updated_at: 2013-08-06 01:00:57.219138000 Z
+terms_090:
+  id: 76
+  code: '201208'
+  description: Summer Quarter 2012
+  created_at: 2013-08-06 00:59:40.854582000 Z
+  updated_at: 2013-08-06 00:59:40.854582000 Z
+terms_091:
+  id: 83
+  code: '199101'
+  description: Winter Quarter 1991
+  created_at: 2013-08-06 01:00:25.442390000 Z
+  updated_at: 2013-08-06 01:00:25.442390000 Z
+terms_092:
+  id: 81
+  code: '200903'
+  description: Spring Quarter 2009
+  created_at: 2013-08-06 01:00:08.073461000 Z
+  updated_at: 2013-08-06 01:00:08.073461000 Z
+terms_093:
+  id: 82
+  code: '198301'
+  description: Winter Quarter 1983
+  created_at: 2013-08-06 01:00:11.180454000 Z
+  updated_at: 2013-08-06 01:00:11.180454000 Z
+terms_094:
+  id: 80
+  code: '198210'
+  description: Fall Quarter 1982
+  created_at: 2013-08-06 01:00:07.080694000 Z
+  updated_at: 2013-08-06 01:00:07.080694000 Z
+terms_095:
+  id: 79
+  code: '200103'
+  description: Spring Quarter 2001
+  created_at: 2013-08-06 01:00:03.055703000 Z
+  updated_at: 2013-08-06 01:00:03.055703000 Z
+terms_096:
+  id: 78
+  code: '201209'
+  description: Fall Semester 2012
+  created_at: 2013-08-06 00:59:50.303506000 Z
+  updated_at: 2013-08-06 00:59:50.303506000 Z
+terms_097:
+  id: 75
+  code: '198701'
+  description: Winter Quarter 1987
+  created_at: 2013-08-06 00:59:38.967899000 Z
+  updated_at: 2013-08-06 00:59:38.967899000 Z
+terms_098:
+  id: 40
+  code: '199503'
+  description: Spring Quarter 1995
+  created_at: 2013-08-06 00:57:50.958981000 Z
+  updated_at: 2013-08-06 00:57:50.958981000 Z
+terms_099:
+  id: 60
+  code: '199803'
+  description: Spring Quarter 1998
+  created_at: 2013-08-06 00:58:56.832689000 Z
+  updated_at: 2013-08-06 00:58:56.832689000 Z
+terms_100:
+  id: 57
+  code: '198501'
+  description: Winter Quarter 1985
+  created_at: 2013-08-06 00:58:52.976566000 Z
+  updated_at: 2013-08-06 00:58:52.976566000 Z
+terms_101:
+  id: 55
+  code: '200802'
+  description: Spring Semester 2008
+  created_at: 2013-08-06 00:58:15.360054000 Z
+  updated_at: 2013-08-06 00:58:15.360054000 Z
+terms_102:
+  id: 30
+  code: '201108'
+  description: Summer Quarter 2011
+  created_at: 2013-08-06 00:57:31.977729000 Z
+  updated_at: 2013-08-06 00:57:31.977729000 Z
+terms_103:
+  id: 25
+  code: '200502'
+  description: Spring Semester 2005
+  created_at: 2013-08-06 00:57:30.513479000 Z
+  updated_at: 2013-08-06 00:57:30.513479000 Z
+terms_104:
+  id: 18
+  code: '200405'
+  description: Summer Session 1 2004
+  created_at: 2013-08-06 00:57:29.260605000 Z
+  updated_at: 2013-08-06 00:57:29.260605000 Z
+terms_105:
+  id: 13
+  code: '200807'
+  description: Summer Session 2 2008
+  created_at: 2013-08-05 22:57:54.010067000 Z
+  updated_at: 2013-08-05 22:57:54.010067000 Z

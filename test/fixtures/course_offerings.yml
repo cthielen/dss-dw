@@ -1,5 +1,7 @@
-offering1:
-  crn: 73502
+---
+course_offerings_001:
+  id: 1
+  crn: '73502'
   active: true
   term_id: 1
   department_id: 1
@@ -8,5 +10,7 @@ offering1:
   course_id: 1
   grading_id: 1
   term_type_id: 1
-  start_date: 2013-08-01
-  end_date: 2013-08-01
+  start_date: 2013-01-07
+  end_date: 2013-03-18
+  created_at: 2013-08-02 07:04:49.031913000 Z
+  updated_at: 2013-08-02 07:04:49.031913000 Z

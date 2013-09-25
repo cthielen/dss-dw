@@ -1,4 +1,7 @@
-history:
+---
+departments_001:
   id: 1
   code: HIS
   description: History
+  created_at: 2013-08-02 06:36:29.208108000 Z
+  updated_at: 2013-08-02 06:36:29.208108000 Z
