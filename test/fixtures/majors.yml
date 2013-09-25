@@ -2,8 +2,8 @@
 
 one:
   code: MyString
-  name: MyString
+  description: MyString
 
 two:
   code: MyString
-  name: MyString
+  description: MyString
