@@ -1,3 +1,5 @@
+job_type :envcommand, 'cd :path && RAILS_ENV=:environment :task'
+
 # set :output, "/path/to/my/cron_log.log"
 #
 every 8.hours do
