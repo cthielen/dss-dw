@@ -1,0 +1,18 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+people_001:
+  id: 1
+  address: 1 first street
+  email:  name@domain.com
+  o_first:  first
+  o_middle: m
+  o_last: last
+  d_first: dFirst
+  d_middle: dM
+  d_last: dLast
+  iam_id: 123456789
+  loginid: fmlast
+  phone: 5307548800
+  is_faculty: false
+  is_staff: true
+  is_student: true
