@@ -42,6 +42,9 @@ class Api::V0::CoursesControllerTest < ActionController::TestCase
 
     get :index, :format => :json
 
+    assert_response :success
+    assert_not_nil assigns(:courses)
+
     body = JSON.parse(response.body)[0]["course"]
 
     assert body.include?('college_code'), 'JSON response should include college_code field'

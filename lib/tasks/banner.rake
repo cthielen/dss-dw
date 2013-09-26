@@ -1,176 +1,162 @@
 # Parses information from Banner into Ruby-based ORM modeling
 
 namespace :banner do
-  desc 'Runs the Banner import. Takes approx. ?? minutes.'
+  desc 'Runs the Banner import.'
   task :import => :environment do
-    require 'oci8'
     require 'yaml'
-
-    # For debugging
-    load 'ObjectStash.rb'
-    require 'pp'
     require 'bigdecimal'
     load 'stopwatch.rb'
 
-    # NOTE: Oracle bits disabled while logic is worked through. Query is stored in file 'courses.stash'.
     banner_config = YAML.load_file("#{Rails.root.to_s}/config/banner.yml")
 
     # Required for Oracle Instant Client
-    #ENV['DYLD_LIBRARY_PATH'] = banner_config['banner']['DYLD_LIBRARY_PATH']
-    #ENV['TNS_ADMIN'] = banner_config['banner']['TNS_ADMIN']
+    # if ENV['DYLD_LIBRARY_PATH'].nil?
+    #   puts "You need to set DYLD_LIBRARY_PATH to the Oracle Instant Client before running this task."
+    #   puts "    e.g. export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2/ in your ~/.bashrc"
+    #   exit
+    # end
+    if ENV['TNS_ADMIN'].nil?
+      puts "You need to set TNS_ADMIN to the Oracle Instant Client before running this task."
+      puts "    e.g. export TNS_ADMIN=/opt/oracle/instantclient_11_2/ in your ~/.bashrc"
+      exit
+    end
+    
+    require 'oci8'
     
     # Username, password, database
     conn = OCI8.new(banner_config['banner']['username'], banner_config['banner']['password'], banner_config['banner']['dbname'])
     
-    puts "Connected. Querying ..."
+    puts "Connected. Querying for record count ..."
     
     cursor = nil # must establish in this scope
     
     cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
     r = cursor.fetch_hash()
-    row_count = r["COUNT(*)"]
+    row_count = r["COUNT(*)"].to_i
     
     elapsed = Stopwatch.time do
       cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
     end
     
-    puts "Query complete. Time elapsed: #{elapsed} seconds"
+    puts "Done. Found #{row_count} records. Query took #{elapsed} seconds"
     
-    puts "Fetching rows..."
+    puts "Fetching records ..."
     
-    courses = []
+    parse_count = 0
     elapsed = Stopwatch.time do
       while r = cursor.fetch_hash()
-        courses << r
-        puts "Fetched row. Courses now at #{courses.length} of #{row_count}."
+        course_offering = parse_course_row(r)
+        course_offering.save!
+        parse_count += 1
+        puts "Fetched row. Courses now at #{parse_count} of #{row_count}."
       end
     end
     
-    puts "Took #{elapsed} seconds."
-    
-    puts "Saving to disk..."
-    
-    ObjectStash.store courses, 'courses.stash'
+    puts "Done. Took #{elapsed} seconds."
     
     cursor.close
     conn.logoff
+  end
+  
+  def parse_course_row(r)
+    # Note: Multiple rows for the same course may exist, indicating different sections
+    # Note: We use find_or_initialize_by and not find_or_create_by. This allows us to use
+    #       new_record? and avoids setting information on old records resulting in needless queries.
 
-    puts "done."
-    
-    exit
-
-
-
-    courses = ObjectStash.load 'courses.stash'
-
-    # Each row is a course
-    #while r = cursor.fetch_hash()
-    courses.each do |r|
-  
-      pp r
-  
-      # Note: Multiple rows for the same course may exist, indicating different sections
-      # Note: We use find_or_initialize_by and not find_or_create_by. This allows us to use
-      #       new_record? and avoids setting information on old records resulting in needless queries.
-
-      # Parse term information
-      term = Term.find_or_initialize_by_code(r["TERM_CODE_KEY"]) # "201301"
-      if term.new_record?
-        term.description = r["TERM_DESC"] # "Winter Quarter 2013"
-        term.save
-      end
-  
-      # Parse department information
-      department = Department.find_or_initialize_by_code(r["DEPT_CODE"]) # "HIS"
-      if department.new_record?
-        department.description = r["DEPT_DESC"] # "History"
-        department.save
-      end
-
-      # Parse instructor information
-      instructor = Instructor.find_or_initialize_by_instructor_id(r["PRIMARY_INSTRUCTOR_ID"]) # "806092270"
-      if instructor.new_record?
-        instructor.last_name = r["PRIMARY_INSTRUCTOR_LAST_NAME"] # "Tezcan"
-        instructor.first_name = r["PRIMARY_INSTRUCTOR_FIRST_NAME"] # "Baki"
-        instructor.middle_initial = r["PRIMARY_INSTRUCTOR_MIDDLE_INIT"] # nil
-        instructor.save
-      end
-      # instructor2, instructor3 - not TAs
-  
-      college = College.find_or_initialize_by_code(r["COLL_CODE"]) # "LS"
-      if college.new_record?
-        college.description = r["COLL_DESC"] # "Letters & Science"
-        college.save
-      end
-  
-      subject = Subject.find_or_create_by_code(r["SUBJ_CODE"]) # "HIS"
-      if subject.new_record?
-        subject.description = r["SUBJ_DESC"] # "History"
-        subject.save
-      end
-  
-      campus = Campus.find_or_create_by_code(r["CAMP_CODE"]) # "M"
-      if campus.new_record?
-        campus.description = r["CAMP_DESC"] # "Main Campus - Davis"
-        campus.save
-      end
-  
-      course = Course.find_or_initialize_by_subject_id_and_number(subject.id, r["CRSE_NUMBER"])
-      if course.new_record?
-        puts "Found a new course"
-        course.title = r["TITLE"] # "Intro to Middle East"
-        course.number = r["CRSE_NUMBER"] # "006"
-        course.effective_term = Term.find_or_create_by_code_and_description(r["COURSE_EFF_TERM_CODE"], r["COURSE_EFF_TERM_DESC"])
-        course.save
-      else
-        puts "Found a new section for existing course"
-      end
-  
-      grading = GradingType.find_or_initialize_by_code(r["GMOD_CODE"]) # 'N'
-      if grading.new_record?
-        grading.description = r["GMOD_DESC"] # "Normal/Letter Grading"
-        grading.save
-      end
-  
-      term_type = TermType.find_or_create_by_code_and_description(r["PTRM_CODE"], r["PTRM_DESC"]) # '1', "Full Term"
-  
-      # A CourseOffering is an instance of a Course in a given Term, i.e. a 'CourseTerm'
-      offering = CourseOffering.new({
-        :crn => r["CRN_KEY"], # "73502"
-        :active => r["ACTIVE_COURSE_IND"] == 'Y',
-        :term => term,
-        :department => department,
-        :instructor => instructor,
-        :college => college,
-        :course => course,
-        :grading => grading, # college, department, and grading go with CourseTerm or Course? (term_type too),
-        :term_type => term_type,
-        :start_date => r["PTRM_START_DATE"],
-        :end_date => r["PTRM_END_DATE"]
-      })
-  
-      section = Section.new(:sequence => r["SEQ_NUMBER_KEY"]) # "A01"
-      section.max_enrollment = r["MAXIMUM_ENROLLMENT"]
-      section.actual_enrollment = r["ACTUAL_ENROLLMENT"]
-      # section.seats_available = maximum_enrollment - actual_enrollment
-      section.active = r["ACTIVE_SECTION_IND"] == 'Y'
-      # Should campus data be assigned per-section or per-course?
-      section.campus = campus
-      offering.sections << section
-  
-  
-  
-      # CRNs are repeated in numerous rows? no.
-  
-      
-      offering.save
-  
+    # Parse term information
+    term = Term.find_or_initialize_by_code(r["TERM_CODE_KEY"]) # "201301"
+    if term.new_record?
+      term.description = r["TERM_DESC"] # "Winter Quarter 2013"
+      term.save
     end
 
-    # cursor.close
-    # conn.logoff
+    # Parse department information
+    department = Department.find_or_initialize_by_code(r["DEPT_CODE"]) # "HIS"
+    if department.new_record?
+      department.description = r["DEPT_DESC"] # "History"
+      department.save
+    end
+
+    # Parse instructor information
+    instructor = Instructor.find_or_initialize_by_instructor_id(r["PRIMARY_INSTRUCTOR_ID"]) # "806092270"
+    if instructor.new_record?
+      instructor.last_name = r["PRIMARY_INSTRUCTOR_LAST_NAME"] # "Tezcan"
+      instructor.first_name = r["PRIMARY_INSTRUCTOR_FIRST_NAME"] # "Baki"
+      instructor.middle_initial = r["PRIMARY_INSTRUCTOR_MIDDLE_INIT"] # nil
+      instructor.save
+    end
+    # instructor2, instructor3 - not TAs
+
+    college = College.find_or_initialize_by_code(r["COLL_CODE"]) # "LS"
+    if college.new_record?
+      college.description = r["COLL_DESC"] # "Letters & Science"
+      college.save
+    end
+
+    subject = Subject.find_or_create_by_code(r["SUBJ_CODE"]) # "HIS"
+    if subject.new_record?
+      subject.description = r["SUBJ_DESC"] # "History"
+      subject.save
+    end
+
+    campus = Campus.find_or_create_by_code(r["CAMP_CODE"]) # "M"
+    if campus.new_record?
+      campus.description = r["CAMP_DESC"] # "Main Campus - Davis"
+      campus.save
+    end
+
+    course = Course.find_or_initialize_by_subject_id_and_number(subject.id, r["CRSE_NUMBER"])
+    if course.new_record?
+      puts "Found a new course"
+      course.title = r["TITLE"] # "Intro to Middle East"
+      course.number = r["CRSE_NUMBER"] # "006"
+      course.effective_term = Term.find_or_create_by_code_and_description(r["COURSE_EFF_TERM_CODE"], r["COURSE_EFF_TERM_DESC"])
+      course.save
+    else
+      puts "Found a new section for existing course"
+    end
+
+    grading = GradingType.find_or_initialize_by_code(r["GMOD_CODE"]) # 'N'
+    if grading.new_record?
+      grading.description = r["GMOD_DESC"] # "Normal/Letter Grading"
+      grading.save
+    end
+
+    term_type = TermType.find_or_create_by_code_and_description(r["PTRM_CODE"], r["PTRM_DESC"]) # '1', "Full Term"
+
+    # A CourseOffering is an instance of a Course in a given Term, i.e. a 'CourseTerm'
+    offering = CourseOffering.new({
+      :crn => r["CRN_KEY"], # "73502"
+      :active => r["ACTIVE_COURSE_IND"] == 'Y',
+      :term => term,
+      :department => department,
+      :instructor => instructor,
+      :college => college,
+      :course => course,
+      :grading => grading, # college, department, and grading go with CourseTerm or Course? (term_type too),
+      :term_type => term_type,
+      :start_date => r["PTRM_START_DATE"],
+      :end_date => r["PTRM_END_DATE"]
+    })
+
+    section = Section.new(:sequence => r["SEQ_NUMBER_KEY"]) # "A01"
+    section.max_enrollment = r["MAXIMUM_ENROLLMENT"]
+    section.actual_enrollment = r["ACTUAL_ENROLLMENT"]
+    # section.seats_available = maximum_enrollment - actual_enrollment
+    section.active = r["ACTIVE_SECTION_IND"] == 'Y'
+    # Should campus data be assigned per-section or per-course?
+    section.campus = campus
+    offering.sections << section
+
+
+
+    # CRNs are repeated in numerous rows? no.
+
+    
+    offering
   end
 end
+
 
 
 
