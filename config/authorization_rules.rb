@@ -3,18 +3,21 @@ authorization do
     has_permission_on :api_v0_courses, :to => :manage
     has_permission_on :api_v0_terms, :to => :manage
     has_permission_on :api_v0_departments, :to => :manage
+    has_permission_on :api_v0_people, :to => :manage
   end
   
   role :api_key do
     has_permission_on :api_v0_courses, :to => :read
     has_permission_on :api_v0_terms, :to => :read
     has_permission_on :api_v0_departments, :to => :read
+    has_permission_on :api_v0_people, :to => :read
   end
   
   role :access do
     has_permission_on :api_v0_courses, :to => :read
     has_permission_on :api_v0_terms, :to => :read
     has_permission_on :api_v0_departments, :to => :read
+    has_permission_on :api_v0_people, :to => :read
   end
 end
 
