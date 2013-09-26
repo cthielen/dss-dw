@@ -74,7 +74,7 @@ namespace :iam do
       associations.each do |a|
         department = Department.find_or_create_by_code(code: a["deptCode"], description: a["deptOfficialName"])
         title = Title.find_or_create_by_code(code: a["titleCode"], o_name: a["titleOfficialName"], d_name: a["titleDisplayName"])
-        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, is_pps: true, is_sis: false, department_id: department.id, title_id: title.id)
+        relationship = Relationship.find_or_create_by_person_id_and_is_sis_and_is_pps_and_title_id(person_id: person.id, is_pps: true, is_sis: false, department_id: department.id, title_id: title.id)
         person.relationships << relationship
       end
 
@@ -82,9 +82,11 @@ namespace :iam do
       student_associations.each do |a|
         major = Major.find_or_create_by_code(code: a["majorCode"], description: a["majorName"])
         college = College.find_or_create_by_code(code: a["collegeCode"], description: a["collegeName"])
-        relationship = Relationship.find_or_create_by_person_id(person_id: person.id, is_pps: false, is_sis: true, major_id: major.id, college_id: college.id)
+        relationship = Relationship.find_or_create_by_person_id_and_is_sis_and_is_pps_and_major_id(person_id: person.id, is_pps: false, is_sis: true, major_id: major.id, college_id: college.id)
         person.relationships << relationship
       end
+      
+      person.save
       
     rescue StandardError => e
       Rails.logger.info "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace}"
