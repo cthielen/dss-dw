@@ -28,8 +28,8 @@ module Api
       end
       
       def load_person
-        @person = Person.find_by_iam_id(params[:id])
-        @person = Person.find_by_loginid(params[:id]) unless @person
+        @person = Person.find_by_loginid(params[:id])
+        @person = Person.find_by_iam_id(params[:id]) unless @person
       end
     end
   end
