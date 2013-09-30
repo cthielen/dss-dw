@@ -46,7 +46,16 @@ namespace :banner do
     elapsed = Stopwatch.time do
       while r = cursor.fetch_hash()
         course_offering = parse_course_row(r)
-        course_offering.save!
+        
+        course_offering.save
+        
+        if course_offering.errors.any?
+          puts "Unable to save course offering:"
+          course_offering.errors.full_messages.each do |m|
+            puts "\t#{m}"
+          end
+        end
+        
         parse_count += 1
         puts "Fetched row. Courses now at #{parse_count} of #{row_count}."
       end
