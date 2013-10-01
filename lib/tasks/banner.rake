@@ -30,7 +30,7 @@ namespace :banner do
     
     cursor = nil # must establish in this scope
     
-    cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
+    cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY >= '200810'")
     r = cursor.fetch_hash()
     row_count = r["COUNT(*)"].to_i
     
