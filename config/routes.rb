@@ -11,4 +11,6 @@ DssDw::Application.routes.draw do
       end
     end
   end
+  
+  get "/status" => "application#status"
 end

@@ -23,48 +23,50 @@ namespace :banner do
     
     require 'oci8'
     
-    # Username, password, database
-    conn = OCI8.new(banner_config['banner']['username'], banner_config['banner']['password'], banner_config['banner']['dbname'])
-    
-    puts "Connected. Querying for record count ..."
-    
-    cursor = nil # must establish in this scope
-    
-    cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY >= '200810'")
-    r = cursor.fetch_hash()
-    row_count = r["COUNT(*)"].to_i
-    
-    elapsed = Stopwatch.time do
-      cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
-    end
-    
-    puts "Done. Found #{row_count} records. Query took #{elapsed} seconds"
-    
-    puts "Fetching records ..."
-    
-    parse_count = 0
-    elapsed = Stopwatch.time do
-      while r = cursor.fetch_hash()
-        course_offering = parse_course_row(r)
-        
-        course_offering.save
-        
-        if course_offering.errors.any?
-          puts "Unable to save course offering:"
-          course_offering.errors.full_messages.each do |m|
-            puts "\t#{m}"
-          end
-        end
-        
-        parse_count += 1
-        puts "Fetched row. Courses now at #{parse_count} of #{row_count}."
+    Rails.logger.tagged "banner:import" do
+      # Username, password, database
+      conn = OCI8.new(banner_config['banner']['username'], banner_config['banner']['password'], banner_config['banner']['dbname'])
+      
+      Rails.logger.debug "Connected. Querying for record count ..."
+      
+      cursor = nil # must establish in this scope
+      
+      cursor = conn.exec("SELECT count(*) FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY >= '200810'")
+      r = cursor.fetch_hash()
+      row_count = r["COUNT(*)"].to_i
+      
+      elapsed = Stopwatch.time do
+        cursor = conn.exec("SELECT * FROM AS_CATALOG_SCHEDULE WHERE TERM_CODE_KEY = '201301'")
       end
+      
+      Rails.logger.debug "Found #{row_count} records. Query took #{elapsed} seconds. Fetching records ..."
+      
+      parse_count = 0
+      elapsed = Stopwatch.time do
+        while r = cursor.fetch_hash()
+          course_offering = parse_course_row(r)
+          
+          course_offering.save
+          
+          if course_offering.errors.any?
+            Rails.logger.error "Unable to save course offering:"
+            course_offering.errors.full_messages.each do |m|
+              Rails.logger.error "\t#{m}"
+            end
+          end
+          
+          parse_count += 1
+        end
+      end
+      
+      Rails.logger.debug "Done. Took #{elapsed} seconds. Parsed #{parse_count} records."
+      
+      cursor.close
+      conn.logoff
     end
     
-    puts "Done. Took #{elapsed} seconds."
-    
-    cursor.close
-    conn.logoff
+    Status.courses_tally = CourseOffering.count
+    Status.last_banner_import = Time.now
   end
   
   def parse_course_row(r)
