@@ -160,5 +160,7 @@ namespace :iam do
     Rails.logger.info "\t- #{@erroredOut} errored out due to some missing fields.\n"
     Rails.logger.info "Time elapsed: " + Time.at(timestamp_finish - timestamp_start).gmtime.strftime('%R:%S')
     
+    Status.people_tally = Person.count
+    Status.last_iam_import = Time.now
   end
 end
