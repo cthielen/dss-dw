@@ -118,13 +118,13 @@ namespace :banner do
 
     course = Course.find_or_initialize_by_subject_id_and_number(subject.id, r["CRSE_NUMBER"])
     if course.new_record?
-      puts "Found a new course"
+      #puts "Found a new course"
       course.title = r["TITLE"] # "Intro to Middle East"
       course.number = r["CRSE_NUMBER"] # "006"
       course.effective_term = Term.find_or_create_by_code_and_description(r["COURSE_EFF_TERM_CODE"], r["COURSE_EFF_TERM_DESC"])
       course.save
     else
-      puts "Found a new section for existing course"
+      #puts "Found a new section for existing course"
     end
 
     grading = GradingType.find_or_initialize_by_code(r["GMOD_CODE"]) # 'N'
