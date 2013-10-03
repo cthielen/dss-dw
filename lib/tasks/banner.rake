@@ -17,7 +17,10 @@ namespace :banner do
     # end
     if ENV['TNS_ADMIN'].nil?
       puts "You need to set TNS_ADMIN to the Oracle Instant Client before running this task."
-      puts "    e.g. export TNS_ADMIN=/opt/oracle/instantclient_11_2/ in your ~/.bashrc"
+      puts "\te.g. export TNS_ADMIN=/opt/oracle/instantclient_11_2/ in your ~/.bashrc"
+      puts "\n"
+      puts "You may also need to set a dynamic loader path (i.e. Mac OS X):"
+      puts "\te.g. export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2/ in your ~/.bashrc"
       exit
     end
     
