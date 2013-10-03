@@ -1,7 +1,7 @@
-# Parses information from Banner into Ruby-based ORM modeling
+# Import person data from UCD IAM.
 
 namespace :iam do
-  desc 'Runs the IAM import. Takes approx. ?? minutes.'
+  desc 'Run the IAM import.'
 
   # Method to get response from given URL
   def fetch_url(url)
@@ -14,7 +14,7 @@ namespace :iam do
     
       return result["responseData"]["results"]
     rescue StandardError => e
-      $stderr.puts "Could not connect to IAM server -- #{e.message} #{e.backtrace}"
+      $stderr.puts "Could not connect to IAM server -- #{e.message}"
     end
   end
   
