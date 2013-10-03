@@ -1,8 +1,77 @@
 # Import person data from UCD IAM.
 
 namespace :iam do
-  desc 'Run the IAM import.'
+  desc 'Import data from IAM.'
+  task :import, [:iamID] => :environment do |t, args|
+    IAM_SETTINGS_FILE = "config/iam.yml"
 
+    require 'net/http'
+    require 'json'
+    require 'yaml'
+
+    Bundler.require
+
+    load 'UcdLookups.rb'
+
+    # In case you receive SSL certificate verification errors
+    require 'openssl'
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+    # Initialize variables
+    @total = @successfullySaved = @erroredOut = @noKerberos = 0
+    timestamp_start = Time.now
+
+    # Import the IAM site and key from the yaml file
+    if File.file?(IAM_SETTINGS_FILE)
+      $IAM_SETTINGS = YAML.load_file(IAM_SETTINGS_FILE)
+      @site = $IAM_SETTINGS['HOST']
+      @key = $IAM_SETTINGS['KEY']
+      @iamId = args.iamID
+    else
+      puts "You need to set up config/iam.yml before running this application."
+      exit
+    end
+
+    # In case no arguments are provided, we fetch for all people in UcdLookups departments
+    if @iamId.nil?
+      # Fetch for all people in UcdLookups departments
+      for d in UcdLookups::DEPT_CODES.keys()
+        # Fetch department members
+        url = "#{@site}iam/associations/pps/search?deptCode=#{d}&key=#{@key}&v=1.0"
+
+        # Loop over members
+        fetch_url(url).each do |p|
+          @total += 1
+          fetch_by_iamId(p["iamId"])
+        end
+      end
+      for m in UcdLookups::MAJORS.values()
+        Rails.logger.info "Processing graduate students in #{m}"
+        url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
+
+        # Loop over members
+        fetch_url(url).each do |p|
+          @total += 1
+          fetch_by_iamId(p["iamId"])
+        end
+      end
+    else
+      fetch_by_iamId(@iamId)
+      @total = 1
+    end
+
+    timestamp_finish = Time.now
+
+    Rails.logger.info "\n\nFinished processing a total of #{@total}:\n"
+    Rails.logger.info "\t- #{@successfullySaved} successfully saved.\n"
+    Rails.logger.info "\t- #{@noKerberos} did not have LoginID in IAM.\n"
+    Rails.logger.info "\t- #{@erroredOut} errored out due to some missing fields.\n"
+    Rails.logger.info "Time elapsed: " + Time.at(timestamp_finish - timestamp_start).gmtime.strftime('%R:%S')
+    
+    Status.people_tally = Person.count
+    Status.last_iam_import = Time.now
+  end
+  
   # Method to get response from given URL
   def fetch_url(url)
     begin
@@ -15,6 +84,7 @@ namespace :iam do
       return result["responseData"]["results"]
     rescue StandardError => e
       $stderr.puts "Could not connect to IAM server -- #{e.message}"
+      return []
     end
   end
   
@@ -92,75 +162,5 @@ namespace :iam do
       Rails.logger.info "Cannot process ID#: #{id} -- #{e.message} #{e.backtrace}"
       @erroredOut += 1
     end
-  end
-
-  task :import, [:iamID] => :environment do |t, args|
-    IAM_SETTINGS_FILE = "config/iam.yml"
-
-    require 'net/http'
-    require 'json'
-    require 'yaml'
-
-    Bundler.require
-
-    load 'UcdLookups.rb'
-
-    # In case you receive SSL certificate verification errors
-    require 'openssl'
-    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
-
-    # Initialize variables
-    @total = @successfullySaved = @erroredOut = @noKerberos = 0
-    timestamp_start = Time.now
-
-    # Import the IAM site and key from the yaml file
-    if File.file?(IAM_SETTINGS_FILE)
-      $IAM_SETTINGS = YAML.load_file(IAM_SETTINGS_FILE)
-      @site = $IAM_SETTINGS['HOST']
-      @key = $IAM_SETTINGS['KEY']
-      @iamId = args.iamID
-    else
-      puts "You need to set up config/iam.yml before running this application."
-      exit
-    end
-
-    # In case no arguments are provided, we fetch for all people in UcdLookups departments
-    if @iamId.nil?
-      # Fetch for all people in UcdLookups departments
-      for d in UcdLookups::DEPT_CODES.keys()
-        # Fetch department members
-        url = "#{@site}iam/associations/pps/search?deptCode=#{d}&key=#{@key}&v=1.0"
-
-        # Loop over members
-        fetch_url(url).each do |p|
-          @total += 1
-          fetch_by_iamId(p["iamId"])
-        end
-      end
-      for m in UcdLookups::MAJORS.values()
-        Rails.logger.info "Processing graduate students in #{m}"
-        url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
-
-        # Loop over members
-        fetch_url(url).each do |p|
-          @total += 1
-          fetch_by_iamId(p["iamId"])
-        end
-      end
-    else
-      fetch_by_iamId(@iamId)
-      @total = 1
-    end
-
-    timestamp_finish = Time.now
-
-    Rails.logger.info "\n\nFinished processing a total of #{@total}:\n"
-    Rails.logger.info "\t- #{@successfullySaved} successfully saved.\n"
-    Rails.logger.info "\t- #{@noKerberos} did not have LoginID in IAM.\n"
-    Rails.logger.info "\t- #{@erroredOut} errored out due to some missing fields.\n"
-    Rails.logger.info "Time elapsed: " + Time.at(timestamp_finish - timestamp_start).gmtime.strftime('%R:%S')
-    
-    Status.people_tally = Person.count
-    Status.last_iam_import = Time.now
   end
 end
