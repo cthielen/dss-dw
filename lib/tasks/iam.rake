@@ -40,20 +40,22 @@ namespace :iam do
         url = "#{@site}iam/associations/pps/search?deptCode=#{d}&key=#{@key}&v=1.0"
 
         # Loop over members
-        fetch_url(url).each do |p|
+        people = fetch_url(url)
+        people.each do |p|
           @total += 1
           fetch_by_iamId(p["iamId"])
-        end
+        end if people
       end
       for m in UcdLookups::MAJORS.values()
         Rails.logger.info "Processing graduate students in #{m}"
         url = "#{@site}iam/associations/sis/search?collegeCode=GS&majorCode=#{m}&key=#{@key}&v=1.0"
 
         # Loop over members
-        fetch_url(url).each do |p|
+        people = fetch_url(url)
+        people.each do |p|
           @total += 1
           fetch_by_iamId(p["iamId"])
-        end
+        end if people
       end
     else
       fetch_by_iamId(@iamId)
@@ -83,8 +85,8 @@ namespace :iam do
     
       return result["responseData"]["results"]
     rescue StandardError => e
-      $stderr.puts "Could not connect to IAM server -- #{e.message}"
-      return []
+      $stderr.puts "Could not fetch URL #{url}: #{e.message}"
+      return false
     end
   end
   
@@ -92,16 +94,19 @@ namespace :iam do
   def fetch_by_iamId(id)
     # Fetch the person
     url = "#{@site}iam/people/search/?iamId=#{id}&key=#{@key}&v=1.0"
-    personInfo = fetch_url(url)[0]
+    personInfoResult = fetch_url(url)
+    personInfo = personInfoResult[0] if personInfoResult
 
     # Fetch the contact info
     url = "#{@site}iam/people/contactinfo/#{id}?key=#{@key}&v=1.0"
-    personContact = fetch_url(url)[0]
+    urlResult = fetch_url(url)
+    personContact = urlResult[0]
 
     # Fetch the kerberos userid
     url = "#{@site}iam/people/prikerbacct/#{id}?key=#{@key}&v=1.0"
     begin
-      loginid = fetch_url(url)[0]["userId"]
+      urlResult = fetch_url(url)
+      loginid = urlResult[0]["userId"]
     rescue
       Rails.logger.info "ID# #{id} does not have a loginId in IAM"
     end
