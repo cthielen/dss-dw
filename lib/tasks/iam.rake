@@ -17,6 +17,9 @@ namespace :iam do
     require 'openssl'
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
+    # Only report $stderr errors if IAM import has failed for over 24 hours
+    @report_stderr = Status.last_iam_import.to_date + 24.hour < Time.now
+
     # Initialize variables
     @total = @successfullySaved = @erroredOut = @noKerberos = 0
     timestamp_start = Time.now
@@ -84,8 +87,8 @@ namespace :iam do
       result = JSON.parse(buffer)
     
       return result["responseData"]["results"]
-    rescue StandardError => e
-      $stderr.puts "Could not fetch URL #{url}: #{e.message}"
+    rescue Net::ReadTimeout => e
+      $stderr.puts "Could not fetch URL #{url}: #{e.message}" if @report_stderr
       return false
     end
   end
