@@ -34,16 +34,13 @@ The following are examples of the DSS Data Warehouse API:
     #https://dss-dw.dev/api/people/johndoe.json - information about user with Kerberos ID 'johndoe'
 
 ### API Versioning
-API versioning is supported via URL:
+API versioning is supported via HTTP Header:
 
-    https://dss-dw.dev/api/terms - Query for terms using the latest API version
-    https://dss-dw.dev/api/v0/terms - Query for terms using API v0
-    https://dss-dw.dev/api/v1/terms - Query for terms using API v1
-    ... etc.
+    curl -H 'Accept: application/vnd.data-warehouse.v1' http://localhost:3000/api/courses
 
 ## Reporting Bugs, Issues
-Use the issue tracker found at [GitHub](https://github.com/cthielen/dss-dw/issues).
+Use the issue tracker found at [BitBucket](https://bitbucket.org/ucd-dss-it/data-warehouse/issues?status=new&status=open).
 
 ### Known Issues
-(Deployment-related issue, not a concern for API consumers)
+* (Deployment-related issue, not a concern for API consumers)
 There's currently a 'conflict' in Oracle's Instant Client and many gems which use LDAP code ('pg', 'mysql2') -- Oracle's code relies on a redefinition of some LDAP-'standard' symbols like ldap_first_entry, which can lead to linking errors. This codebase avoids LDAP for this reason and recommends if you have segmentation faults or assertion errors while using Oracle code, you link against a version of your library ('pg' or 'mysql2', for example) which does not have LDAP support compiled in. Be aware that you can compile a special gem and package it in vendor/cache/ if you need LDAP support in these gems system-wide.
