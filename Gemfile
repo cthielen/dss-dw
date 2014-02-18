@@ -21,17 +21,14 @@ gem 'oj'
 # Authorization layer
 gem 'declarative_authorization', '~> 0.5.7'
 
-# Use unicorn as the app server
-gem 'unicorn'
-
 # Deploy with Capistrano
-gem 'capistrano'
+gem 'capistrano', '< 3.0.0'
 
 # For scheduled tasks
 gem 'whenever'
 
 # To use debugger
-gem 'debugger'
+gem 'debugger', :groups => [:development]
 
 # For benchmarking
 gem 'ruby-prof'
